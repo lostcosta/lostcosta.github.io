@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Markdown语法精要 - Brein&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="张炳晓" />
+  <meta name="description" content="首次接触Markdown是在某个独立博客上，当时在搜一个技术上的问题，结果一进去，就被它的排版吸引了。后果就是想搜的东西没有搜到，却开始了我的Markdown之旅&amp;hellip;
+找了几个常用到的介绍下，也是学完Markdown的一个小总结吧。
+
+" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.48" />
+
+
+<link rel="canonical" href="https://lostcosta.github.io/post/markdown%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Markdown语法精要" />
+<meta property="og:description" content="
+
+首次接触Markdown是在某个独立博客上，当时在搜一个技术上的问题，结果一进去，就被它的排版吸引了。后果就是想搜的东西没有搜到，却开始了我的Markdown之旅&hellip;
+
+找了几个常用到的介绍下，也是学完Markdown的一个小总结吧。
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lostcosta.github.io/post/markdown%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" /><meta property="article:published_time" content="2017-12-11T00:41:30&#43;00:00"/>
+<meta property="article:modified_time" content="2017-12-11T00:41:30&#43;00:00"/>
+<meta itemprop="name" content="Markdown语法精要">
+<meta itemprop="description" content="
+
+首次接触Markdown是在某个独立博客上，当时在搜一个技术上的问题，结果一进去，就被它的排版吸引了。后果就是想搜的东西没有搜到，却开始了我的Markdown之旅&hellip;
+
+找了几个常用到的介绍下，也是学完Markdown的一个小总结吧。
+
+">
+
+
+<meta itemprop="datePublished" content="2017-12-11T00:41:30&#43;00:00" />
+<meta itemprop="dateModified" content="2017-12-11T00:41:30&#43;00:00" />
+<meta itemprop="wordCount" content="842">
+
+
+
+<meta itemprop="keywords" content="Markdown," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Markdown语法精要"/>
+<meta name="twitter:description" content="
+
+首次接触Markdown是在某个独立博客上，当时在搜一个技术上的问题，结果一进去，就被它的排版吸引了。后果就是想搜的东西没有搜到，却开始了我的Markdown之旅&hellip;
+
+找了几个常用到的介绍下，也是学完Markdown的一个小总结吧。
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Brein&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Brein&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Markdown语法精要</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017年12月11日 00时41分30秒 </span>
+        <div class="post-category">
+            
+              <a href="/categories/markdown/"> Markdown </a>
+            
+          </div>
+        <span class="more-meta"> 约 842 字 </span>
+        <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#基本操作">基本操作</a></li>
+<li><a href="#代办事项">代办事项</a></li>
+<li><a href="#高亮代码">高亮代码</a></li>
+<li><a href="#表格">表格</a>
+<ul>
+<li><a href="#markdown语法制表">Markdown语法制表</a></li>
+</ul></li>
+<li><a href="#图片">图片</a></li>
+<li><a href="#链接">链接</a></li>
+<li><a href="#markdown编辑器推荐">Markdown编辑器推荐</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p><img src="/images/01.jpg" alt="title" /></p>
+
+<p>首次接触Markdown是在某个独立博客上，当时在搜一个技术上的问题，结果一进去，就被它的排版吸引了。后果就是想搜的东西没有搜到，却开始了我的Markdown之旅&hellip;</p>
+
+<p>找了几个常用到的介绍下，也是学完Markdown的一个小总结吧。</p>
+
+<p></p>
+
+<h2 id="基本操作">基本操作</h2>
+
+<ul>
+<li><p>斜体/粗体/斜体+粗体</p>
+
+<p>示例： <em>斜体</em>  / <strong>粗体</strong> / <strong><em>粗体+斜体</em></strong> /<br />
+实现： *斜体* | **粗体**| ***粗体+斜体***</p></li>
+
+<li><p>删除线</p>
+
+<p>示例： <del>删除线删除线删除线</del>
+实现： ~~删除线删除线删除线~~</p></li>
+
+<li><p>下划线</p>
+
+<p>示例： <u>下划线，需要html标记</u><br />
+实现： 需要用到HTML语法标记&lt;u&gt;</p></li>
+</ul>
+
+<h2 id="代办事项">代办事项</h2>
+
+<p>显示效果如下:</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 支持PDF格式导出文稿</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 新增Todo列表功能</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 网易云笔记不支持流程图</label></li>
+</ul>
+
+<blockquote>
+<p>实现方式： 待办- [] / 已办- [x]</p>
+</blockquote>
+
+<h2 id="高亮代码">高亮代码</h2>
+
+<pre><code class="language-python">@requires_authorization
+class SomeClass:
+    pass
+
+if __name__ == '__main__':
+    # A comment
+    print 'hello world'
+</code></pre>
+
+<blockquote>
+<p>实现方式：用一组```将代码括起来即可，其中在开头的```后面可以注释是什么代码（如：python），以便得到正确的语法高亮效果。</p>
+</blockquote>
+
+<h2 id="表格">表格</h2>
+
+<h3 id="markdown语法制表">Markdown语法制表</h3>
+
+<p>&#124; 单词          &#124; 翻译                 &#124;   例句        &#124;
+&#124; :&mdash;&mdash;&mdash;&mdash; &#124;:&mdash;&mdash;&mdash;&mdash;&mdash;-&#124;:&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&#124;
+&#124;flower          &#124; 花        &#124;     this is a flower   &#124;
+&#124; user          &#124; 用户            &#124;                    &#124;
+&#124; password      &#124; 密码      &#124;       your pasword      &#124;</p>
+
+<p>效果如下:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">flower</td>
+<td align="left">花</td>
+<td align="left">this is a flower</td>
+</tr>
+
+<tr>
+<td align="left">user</td>
+<td align="left">用户</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left">password</td>
+<td align="left">密码</td>
+<td align="left">your password</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="图片">图片</h2>
+
+<blockquote>
+<p>语法比较简单：![图片描述](地址)即可,图片可以和自己的文章放在一起，也可以放在空间服务商处，将生成的链接放在地址处。</p>
+</blockquote>
+
+<h2 id="链接">链接</h2>
+
+<blockquote>
+<p>语法和图片几乎一致，只是少了个叹号：[google](<a href="http://www.google.com">http://www.google.com</a> &ldquo;google&rdquo;) =&gt; <a href="http://www.google.com" title="google">google</a></p>
+
+<p>这个是直接给文字加链接（文字两段加&lt;&gt;即可）：<a href="http://example.com/">http://example.com/</a></p>
+</blockquote>
+
+<h2 id="markdown编辑器推荐">Markdown编辑器推荐</h2>
+
+<p>现在好的Markdown编辑器已经很多，实际用了几个，感觉不错的先放上来：</p>
+
+<ul>
+<li><a href="https://www.typora.io/">typora</a>：所写即所得，直接，支持语法较全面</li>
+<li><a href="https://ivarptr.github.io/yu-writer.site/">yu-writer</a>：简洁可定制</li>
+<li><a href="https://www.zybuluo.com/mdeditor">作业部落</a>：这个不用多说了，用就是了</li>
+<li><a href="https://maxiang.io/">马克飞象</a>：Evernote良伴</li>
+<li><a href="http://note.youdao.com/">有道云笔记</a>：虽然还有很多不足，但是已经不错了,文章收藏利器</li>
+</ul>
+
+<p>备注：本文是个摘要，常用的、有遇到过问题的写上来了，以备不时之需，可能有的介绍略简单，不过实际上手试一下就明白了。</p>
+
+<p>(全文完)</p>
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">张炳晓</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2017年12月11日 00时41分30秒</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/markdown/">Markdown</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/my-back-pages/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">My Back Pages</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://lostcosta.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    
+    
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">张炳晓</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

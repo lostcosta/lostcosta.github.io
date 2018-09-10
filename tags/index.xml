@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Brein&#39;s blog</title>
+    <link>https://lostcosta.github.io/tags/</link>
+    <description>Recent content in Tags on Brein&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 11 Dec 2017 00:41:30 +0000</lastBuildDate>
+    
+	<atom:link href="https://lostcosta.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://lostcosta.github.io/tags/markdown/</link>
+      <pubDate>Mon, 11 Dec 2017 00:41:30 +0000</pubDate>
+      
+      <guid>https://lostcosta.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>歌词</title>
+      <link>https://lostcosta.github.io/tags/%E6%AD%8C%E8%AF%8D/</link>
+      <pubDate>Fri, 07 Sep 2018 00:08:33 +0800</pubDate>
+      
+      <guid>https://lostcosta.github.io/tags/%E6%AD%8C%E8%AF%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>音乐</title>
+      <link>https://lostcosta.github.io/tags/%E9%9F%B3%E4%B9%90/</link>
+      <pubDate>Fri, 07 Sep 2018 00:08:33 +0800</pubDate>
+      
+      <guid>https://lostcosta.github.io/tags/%E9%9F%B3%E4%B9%90/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

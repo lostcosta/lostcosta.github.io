@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://lostcosta.github.io/sitemap.xml
