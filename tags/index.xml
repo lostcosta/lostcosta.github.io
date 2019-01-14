@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Brein&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>张炳晓. All Rights Reserved</copyright>
+    <copyright>Brein. All Rights Reserved</copyright>
     <lastBuildDate>Mon, 11 Dec 2017 00:41:30 +0000</lastBuildDate>
     
 	<atom:link href="https://lostcosta.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -22,11 +22,29 @@
     </item>
     
     <item>
+      <title>开发技巧</title>
+      <link>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Mon, 14 Jan 2019 22:28:03 +0800</pubDate>
+      
+      <guid>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>歌词</title>
       <link>https://lostcosta.github.io/tags/%E6%AD%8C%E8%AF%8D/</link>
       <pubDate>Fri, 07 Sep 2018 00:08:33 +0800</pubDate>
       
       <guid>https://lostcosta.github.io/tags/%E6%AD%8C%E8%AF%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>知识点</title>
+      <link>https://lostcosta.github.io/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <pubDate>Mon, 14 Jan 2019 22:28:03 +0800</pubDate>
+      
+      <guid>https://lostcosta.github.io/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
       <description></description>
     </item>
     
