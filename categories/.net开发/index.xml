@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Brein. All Rights Reserved</copyright>
-    <lastBuildDate>Mon, 14 Jan 2019 22:28:03 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Apr 2019 23:14:58 +0800</lastBuildDate>
     
 	<atom:link href="https://lostcosta.github.io/categories/.net%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>C#如何调用C&#43;&#43;函数(续)</title>
+      <link>https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B002/</link>
+      <pubDate>Fri, 26 Apr 2019 23:14:58 +0800</pubDate>
+      
+      <guid>https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B002/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://res.cloudinary.com/dfuc91ene/image/upload/v1547488655/MyPic/02.jpg&#34; alt=&#34;IMG&#34; title=&#34;IMG&#34; /&gt;
+在上一篇文章中介绍了C#调用C++类库函数的两个方法，在实际应用中可以根据需求的不同，利用不同的方法。其实，在C#调用C++编写的类库时，还是经常会遇到问题的，&lt;br /&gt;
+本次就来进一步讲解，在这一过程中可能遇到的问题。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>C#如何调用C&#43;&#43;函数</title>
@@ -21,10 +32,7 @@
       <description>&lt;p&gt;&lt;img src=&#34;https://res.cloudinary.com/dfuc91ene/image/upload/v1547488655/MyPic/02.jpg&#34; alt=&#34;IMG&#34; title=&#34;IMG&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;C#作为.NET的主力开发语言，当然也是主要运行在Windows环境中了。而在日常的开发中，时不时会遇到项目需要调用环境API或者基于Windows开发的C++程序的某个函数的情况。
-本次我就来介绍下在C#的程序中，如何调用系统API以及C++程序的函数接口。
-
-最近我在做的一个项目（C#语言开发）遇到了需要调用C++的函数的问题，经过一番网上资料的汇总，利用前人造好的轮子亲身实践了一把，成功实现了需求。下面就把我收集的方法
-做个总结，方便以后查找。&lt;/p&gt;</description>
+本次我就来介绍下在C#的程序中，如何调用系统API以及C++程序的函数接口。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>C#如何调用C&#43;&#43;函数(续) - Brein&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Brein" /><meta name="description" content="C#调用C&#43;&#43;API的方法总结" /><meta name="keywords" content="C#, 调用, C&#43;&#43;函数, DLLImport, 特性" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B002/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="C#如何调用C&#43;&#43;函数(续)" />
+<meta property="og:description" content="C#调用C&#43;&#43;API的方法总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B002/" /><meta property="article:published_time" content="2019-04-26T23:14:58&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-26T23:14:58&#43;08:00"/>
+
+<meta itemprop="name" content="C#如何调用C&#43;&#43;函数(续)">
+<meta itemprop="description" content="C#调用C&#43;&#43;API的方法总结">
+
+
+<meta itemprop="datePublished" content="2019-04-26T23:14:58&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-26T23:14:58&#43;08:00" />
+<meta itemprop="wordCount" content="979">
+
+
+
+<meta itemprop="keywords" content="开发技巧,知识点," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="C#如何调用C&#43;&#43;函数(续)"/>
+<meta name="twitter:description" content="C#调用C&#43;&#43;API的方法总结"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Brein&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Brein&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">C#如何调用C&#43;&#43;函数(续)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019年4月26日 23时14分58秒 </span>
+        <div class="post-category">
+            <a href="/categories/.net%E5%BC%80%E5%8F%91/"> .Net开发 </a>
+            </div>
+          <span class="more-meta"> 约 979 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#数据类型转换问题">数据类型转换问题</a></li>
+<li><a href="#传递结构体">传递结构体</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1547488655/MyPic/02.jpg" alt="IMG" title="IMG" />
+在上一篇文章中介绍了C#调用C++类库函数的两个方法，在实际应用中可以根据需求的不同，利用不同的方法。其实，在C#调用C++编写的类库时，还是经常会遇到问题的，<br />
+本次就来进一步讲解，在这一过程中可能遇到的问题。</p>
+
+<h1 id="数据类型转换问题">数据类型转换问题</h1>
+
+<p>C#是一门托管语言，运行于.NET框架下的CLR（Common Language Running）公共语言运行时，利用的是.NET的基本数据类型，而这种数据类型与C++是有所不同的。<br />
+因此，在函数调用过程中，我们需要将C#的数据类型，转换为对应的C++数据类型。下面列出了数据类型之间的对应关系：</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">C++数据类型</th>
+<th align="left">C#数据类型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">char, INT8, SBYTE, CHAR</td>
+<td align="left">sbyte</td>
+</tr>
+
+<tr>
+<td align="left">unsigned char, UINT8, UCHAR, BYTE</td>
+<td align="left">byte</td>
+</tr>
+
+<tr>
+<td align="left">short, short int, INT16, SHORT</td>
+<td align="left">short(Int16)</td>
+</tr>
+
+<tr>
+<td align="left">unsigned short, UINT16, USHORT, WORD, ATOM, WCHAR, __wchar_t</td>
+<td align="left">UInt16</td>
+</tr>
+
+<tr>
+<td align="left">int, long, long int, INT32, INT, LONG32, BOOL</td>
+<td align="left">int(Int32)</td>
+</tr>
+
+<tr>
+<td align="left">__int64, INT64, LONGLONG</td>
+<td align="left">long(Int64)</td>
+</tr>
+
+<tr>
+<td align="left">unsigned, unsigned int, UINT32, ULONG32, DWORD32, ULONG, DWORD, UINT</td>
+<td align="left">UInt32</td>
+</tr>
+
+<tr>
+<td align="left">unsigned __int64, UINT64, DWORDLONG, ULONGLONG,</td>
+<td align="left">UInt64</td>
+</tr>
+
+<tr>
+<td align="left">float, FLOAT</td>
+<td align="left">Single</td>
+</tr>
+
+<tr>
+<td align="left">double, long double, DOUBLE</td>
+<td align="left">Double</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="传递结构体">传递结构体</h1>
+
+<p>可能大家也注意到了，在上一篇文章中，给DLL类库的方法传参数时，我们使用了结构体，本次我们通过例子来说明如何向C++函数传递结构体。</p>
+
+<p>CPP代码(定义结构体并导出函数)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-CPP" data-lang="CPP">  <span class="k">typedef</span> <span class="k">struct</span> <span class="n">tarPointInfo</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">SeqNo</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">MemNo</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">DataType</span><span class="p">[</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">MemName</span><span class="p">[</span><span class="mi">69</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">OutPutValue1</span><span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">OutPutValue2</span><span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+  <span class="p">}</span><span class="n">PointInfo</span><span class="p">;</span>
+
+  <span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kr">__declspec</span><span class="p">(</span><span class="n">dllexport</span><span class="p">)</span>
+  <span class="kt">int</span> <span class="n">fnCPointReq</span><span class="p">(</span><span class="n">PointInfo</span><span class="o">*</span> <span class="n">info</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">info</span><span class="o">-&gt;</span><span class="n">SeqNo</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">info</span><span class="o">-&gt;</span><span class="n">MemNo</span> <span class="o">==</span> <span class="mi">100010</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">strcpy_s</span><span class="p">(</span><span class="n">info</span><span class="o">-&gt;</span><span class="n">OutPutValue1</span><span class="p">,</span> <span class="s">&#34;rwqrqwerewr1&#34;</span><span class="p">);</span>
+      <span class="n">strcpy_s</span><span class="p">(</span><span class="n">info</span><span class="o">-&gt;</span><span class="n">OutPutValue2</span><span class="p">,</span> <span class="s">&#34;rwqrqwerewr2&#34;</span><span class="p">);</span>
+      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>C#代码调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#">  <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="c1">//注意特性里必须加入CallingConvention = CallingConvention.Cdecl，表面函数可以传递可变参数。
+</span><span class="c1"></span>        <span class="c1">//默认是CallingConvention.StdCall
+</span><span class="c1"></span><span class="na">        [DllImport(@&#34;TESTFORCSHARPCALL.dll&#34;, EntryPoint = &#34;fnCPointReq&#34;, 
+</span><span class="na">         CallingConvention = CallingConvention.Cdecl)]</span>
+        <span class="c1">//传递ref参数，可以传值也可以得到返回值
+</span><span class="c1"></span>        <span class="k">public</span> <span class="k">extern</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">fnCPointReq</span><span class="p">(</span><span class="k">ref</span> <span class="n">PointInfo</span> <span class="n">info</span><span class="p">);</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="n">Main</span><span class="p">(</span><span class="kt">string</span><span class="na">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">PointInfo</span> <span class="n">info</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PointInfo</span> <span class="p">{</span> <span class="n">SeqNo</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">MemNo</span><span class="p">=</span> <span class="m">100010</span><span class="p">,</span> 
+                                             <span class="n">DataType</span><span class="p">=</span><span class="s">&#34;TestData&#34;</span><span class="p">,</span> <span class="n">MemName</span><span class="p">=</span><span class="s">&#34;TestName&#34;</span> <span class="p">};</span>
+
+            <span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="n">fnCPointReq</span><span class="p">(</span><span class="k">ref</span> <span class="n">info</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="n">OutPutValue1</span><span class="p">);</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="n">OutPutValue2</span><span class="p">);</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Success!!&#34;</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Failed!!&#34;</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="na">
+</span><span class="na">    [StructLayout(LayoutKind.Sequential)]</span>
+    <span class="k">public</span> <span class="k">struct</span> <span class="nc">PointInfo</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">SeqNo</span><span class="p">;</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">MemNo</span><span class="p">;</span>
+        <span class="c1">//char[]类型字符串，可以通过转换为UnmanagedType.ByValTStr类型来传递，但是必须标明SizeConst
+</span><span class="c1"></span><span class="na">        [MarshalAs(UnmanagedType.ByValTStr,SizeConst =3)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">DataType</span><span class="p">;</span><span class="na">
+</span><span class="na">        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 70)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">MemName</span><span class="p">;</span><span class="na">
+</span><span class="na">        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 21)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">OutPutValue1</span><span class="p">;</span><span class="na">
+</span><span class="na">        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 21)]</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">OutPutValue2</span><span class="p">;</span>
+    <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>以上就是关于参数类型相关的说明，最后要说明的是，C#侧定义结构体的参数顺序一定要与C++的一致，否则会出现错误，因为C#程序中的结构体是通过指针传递给DLL的，<br />
+DLL在读取结构体数据时，时根据指针+偏移量的方式读取的，因此顺序至关重要。</p>
+
+<p>对于复杂结构体作为传入和传出参数的说明，后续项目遇到会陆续补充。目前可以参照<a href="https://tcspecial.iteye.com/blog/1675309">例子</a></p>
+
+<p>（全文完）</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Brein</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019年4月26日 23时14分58秒</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
+  </p>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/">开发技巧</a>
+          <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B0/">
+            <span class="next-text nav-default">C#如何调用C&#43;&#43;函数</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://lostcosta.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    
+    
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Brein. All Rights Reserved</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B002/</loc>
+    <lastmod>2019-04-26T23:14:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B0/</loc>
     <lastmod>2019-01-14T22:28:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -32,7 +39,7 @@
   
   <url>
     <loc>https://lostcosta.github.io/categories/.net%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2019-01-14T22:28:03+08:00</lastmod>
+    <lastmod>2019-04-26T23:14:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -46,7 +53,7 @@
   
   <url>
     <loc>https://lostcosta.github.io/categories/</loc>
-    <lastmod>2019-01-14T22:28:03+08:00</lastmod>
+    <lastmod>2019-04-26T23:14:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -67,7 +74,7 @@
   
   <url>
     <loc>https://lostcosta.github.io/post/</loc>
-    <lastmod>2019-01-14T22:28:03+08:00</lastmod>
+    <lastmod>2019-04-26T23:14:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -81,7 +88,7 @@
   
   <url>
     <loc>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2019-01-14T22:28:03+08:00</lastmod>
+    <lastmod>2019-04-26T23:14:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -102,7 +109,7 @@
   
   <url>
     <loc>https://lostcosta.github.io/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
-    <lastmod>2019-01-14T22:28:03+08:00</lastmod>
+    <lastmod>2019-04-26T23:14:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
