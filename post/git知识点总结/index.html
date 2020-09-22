@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>生活 · Brein&#39;s blog</title>
+  <title>Git知识点总结 - Brein&#39;s blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Brein" /><meta name="description" content="一个程序员的日常" />
+<meta name="author" content="Brein" /><meta name="description" content="Git知识点总结" /><meta name="keywords" content="git" />
 
 
 
@@ -26,9 +26,7 @@
 <meta name="generator" content="Hugo 0.53 with even 4.0.0" />
 
 
-<link rel="canonical" href="https://lostcosta.github.io/categories/%E7%94%9F%E6%B4%BB/" />
-  <link href="https://lostcosta.github.io/categories/%E7%94%9F%E6%B4%BB/index.xml" rel="alternate" type="application/rss+xml" title="Brein&#39;s blog" />
-  <link href="https://lostcosta.github.io/categories/%E7%94%9F%E6%B4%BB/index.xml" rel="feed" type="application/rss+xml" title="Brein&#39;s blog" />
+<link rel="canonical" href="https://lostcosta.github.io/post/git%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,18 +38,26 @@
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
-<meta property="og:title" content="生活" />
-<meta property="og:description" content="一个程序员的日常" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://lostcosta.github.io/categories/%E7%94%9F%E6%B4%BB/" />
-<meta property="og:updated_time" content="2018-09-07T00:08:33&#43;08:00"/>
+<meta property="og:title" content="Git知识点总结" />
+<meta property="og:description" content="Git知识点总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lostcosta.github.io/post/git%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" /><meta property="article:published_time" content="2019-04-27T18:09:53&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-27T18:09:53&#43;08:00"/>
 
-<meta itemprop="name" content="生活">
-<meta itemprop="description" content="一个程序员的日常">
+<meta itemprop="name" content="Git知识点总结">
+<meta itemprop="description" content="Git知识点总结">
 
+
+<meta itemprop="datePublished" content="2019-04-27T18:09:53&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-27T18:09:53&#43;08:00" />
+<meta itemprop="wordCount" content="164">
+
+
+
+<meta itemprop="keywords" content="开发工具,知识点," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="生活"/>
-<meta name="twitter:description" content="一个程序员的日常"/>
+<meta name="twitter:title" content="Git知识点总结"/>
+<meta name="twitter:description" content="Git知识点总结"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -115,27 +121,98 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="archive" class="archive">
-  <div class="archive-title category">
-        <h2 class="archive-name">生活</h2>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Git知识点总结</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019年4月27日 18时09分53秒 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"> 开发工具 </a>
+            </div>
+          <span class="more-meta"> 约 164 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
+    </header>
 
-  <div class="archive-post">
-      <span class="archive-post-time">
-        2018年9月7日 00时08分33秒
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/my-back-pages/" class="archive-post-link">
-          My Back Pages
-        </a>
-      </span>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>Git是开发必备工具，由于它的分布式设计，相比于SVN等有很多优点，本文介绍Git相关知识点，及Git相关工具网站。</p>
+
+<p>#配置</p>
+
+<p>config的用户配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-git" data-lang="git"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-git" data-lang="git">  git config --global user.name=XXXX
+  git config --global user.email=XXXXX@XXX
+
+  git config --global  //本用户
+  git config --local   //只有本仓库这么配置
+  git config --system  //所有用户都这么配置，基本不用，权限太大</code></pre></td></tr></table>
+</div>
+</div>
+<p>显示config的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-git" data-lang="git"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-git" data-lang="git">  git config --list --local
+  git config --list --global
+  git config --list --system
+  git config --list</code></pre></td></tr></table>
+</div>
+</div>
     </div>
-</section>
 
-<nav class="pagination">
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Brein</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019年4月27日 18时09分53秒</span>
+  </p>
   
-  
-</nav>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
+  </p>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+          <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B002/">
+            <span class="next-text nav-default">C#如何调用C&#43;&#43;函数(续)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
 
