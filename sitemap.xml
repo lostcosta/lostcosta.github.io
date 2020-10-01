@@ -87,14 +87,14 @@
   </url>
   
   <url>
-    <loc>https://lostcosta.github.io/categories/markdown/</loc>
+    <loc>https://lostcosta.github.io/tags/markdown/</loc>
     <lastmod>2017-12-11T00:41:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lostcosta.github.io/tags/markdown/</loc>
+    <loc>https://lostcosta.github.io/categories/markdown/</loc>
     <lastmod>2017-12-11T00:41:30+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -136,13 +136,6 @@
   </url>
   
   <url>
-    <loc>https://lostcosta.github.io/categories/php/</loc>
-    <lastmod>2020-10-01T22:17:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://lostcosta.github.io/tags/php/</loc>
     <lastmod>2020-10-01T22:17:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -150,14 +143,21 @@
   </url>
   
   <url>
-    <loc>https://lostcosta.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2019-04-27T18:09:53+08:00</lastmod>
+    <loc>https://lostcosta.github.io/categories/php/</loc>
+    <lastmod>2020-10-01T22:17:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2019-04-27T18:09:53+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lostcosta.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2019-04-27T18:09:53+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
@@ -171,14 +171,14 @@
   </url>
   
   <url>
-    <loc>https://lostcosta.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>https://lostcosta.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2020-09-22T22:45:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://lostcosta.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>https://lostcosta.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2020-09-22T22:45:20+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
