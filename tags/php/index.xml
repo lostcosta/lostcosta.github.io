@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on Brein&#39;s blog</title>
+    <link>https://lostcosta.github.io/tags/php/</link>
+    <description>Recent content in php on Brein&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Brein. All Rights Reserved</copyright>
+    <lastBuildDate>Thu, 01 Oct 2020 22:17:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://lostcosta.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Laravel开发环境搭建</title>
+      <link>https://lostcosta.github.io/post/laravel_configuration/</link>
+      <pubDate>Thu, 01 Oct 2020 22:17:35 +0800</pubDate>
+      
+      <guid>https://lostcosta.github.io/post/laravel_configuration/</guid>
+      <description>&lt;p&gt;本文将详细介绍如何在windows环境中配置Laravel框架的开发环境。该框架基于PHP的一个高效的网站开发框架，通过它可以非常快速的构建网站。本文将从PHP环境的配置、Apache环境的配置、composer工具的安装、laravel项目的构建、以及debug环境的配置等进行详细说明。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
