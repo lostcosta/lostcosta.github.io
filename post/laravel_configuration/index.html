@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-10-01T22:17:35&#43;08:00" />
 <meta itemprop="dateModified" content="2020-10-01T22:17:35&#43;08:00" />
-<meta itemprop="wordCount" content="865">
+<meta itemprop="wordCount" content="2520">
 
 
 
@@ -131,8 +131,8 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 865 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 2520 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -155,6 +155,12 @@
 <li><a href="#配置默认站点">配置默认站点</a></li>
 <li><a href="#加载php相关配置">加载PHP相关配置</a></li>
 </ul></li>
+<li><a href="#用-composer-构建-laravel-项目">用<code>Composer</code>构建<code>laravel</code>项目</a>
+<ul>
+<li><a href="#设置phpstorm">设置phpStorm</a></li>
+<li><a href="#postman测试">Postman测试</a></li>
+</ul></li>
+<li><a href="#laravel项目追加-debugbar">laravel项目追加<code>Debugbar</code></a></li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -163,7 +169,7 @@
   </div>
 </div>
     <div class="post-content">
-      <p>本文将详细介绍如何在windows环境中配置Laravel框架的开发环境。该框架基于PHP的一个高效的网站开发框架，通过它可以非常快速的构建网站。本文将从PHP环境的配置、Apache环境的配置、composer工具的安装、laravel项目的构建、以及debug环境的配置等进行详细说明。</p>
+      <p>本文将详细介绍如何在windows环境中配置<code>Laravel</code>框架的开发环境。该框架基于PHP的一个高效的网站开发框架，通过它可以非常快速的构建网站。本文将从PHP环境的配置、Apache环境的配置、composer工具的安装、laravel项目的构建、以及debug环境的配置等进行详细说明。</p>
 
 <h4 id="首先-php环境的搭建">首先，PHP环境的搭建</h4>
 
@@ -269,6 +275,272 @@ AddType application/x-httpd-php .php</code></pre></td></tr></table>
 <p>然后打开浏览器访问：localhost:80，如果出现PHP相关配置清单一览，则说明配置成功</p>
 
 <p><img src="/images/image-20201001230642983.png" alt="phpinfo" /></p>
+
+<blockquote>
+<p>Tips：apache判断配置文件是否有错，可以cmd进入到bin目录，执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">&gt;</span> <span class="n">httpd</span> <span class="n">-t</span>
+<span class="p">&gt;</span> <span class="p">```</span>
+<span class="p">&gt;</span>
+<span class="p">&gt;</span> <span class="n">显示OK即为配置正确</span>
+
+<span class="n">到此apache的PHP配置还差最后一步</span><span class="err">：</span><span class="n">配置</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">ini</span><span class="p">`</span><span class="n">文件</span><span class="err">，</span><span class="n">首先把</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">exe</span><span class="p">`</span><span class="n">目录下的</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">ini-development</span><span class="p">`</span><span class="n">文件复制一份并命名为</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">ini</span><span class="p">`</span><span class="err">，</span><span class="n">然后打开php</span><span class="p">.</span><span class="n">ini进行配置</span><span class="err">：</span>
+
+<span class="p">-</span> <span class="n">打开</span><span class="p">`</span><span class="n">extension_dir</span> <span class="p">=</span> <span class="s2">&#34;ext&#34;</span><span class="p">`</span>
+<span class="p">-</span> <span class="n">根据laravel的版本要求</span><span class="err">，</span><span class="n">打开对应扩展</span><span class="err">：</span><span class="p">`</span><span class="n">curl</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">fileinfo</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">mbstring</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">openssl</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">pdo_mysql</span><span class="p">`</span>
+
+<span class="n">ok</span><span class="err">，</span><span class="n">apache的PHP配置完毕</span><span class="err">！</span>
+
+<span class="c">#### 安装composer</span>
+
+<span class="n">因为composer服务器在外网</span><span class="err">，</span><span class="n">速度方面很慢</span><span class="err">，</span><span class="n">因此直接用阿里云提供的composer及其镜像即可</span><span class="err">。</span>
+
+<span class="n">下载地址</span><span class="err">:</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">aliyun</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">composer</span><span class="p">/</span><span class="n">composer</span><span class="p">.</span><span class="n">phar</span>
+
+<span class="n">将下载下来的</span><span class="p">`</span><span class="n">composer</span><span class="p">.</span><span class="n">phar</span><span class="p">`</span><span class="n">放到php目录</span><span class="err">，，</span><span class="n">也就是和</span> <span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">exe</span><span class="p">`</span> <span class="n">在同一级目录</span><span class="err">。</span><span class="n">在</span> <span class="n">PHP</span> <span class="n">安装目录下新建一个</span> <span class="p">`</span><span class="n">composer</span><span class="p">.</span><span class="n">bat</span><span class="p">`</span> <span class="n">文件</span><span class="err">，</span><span class="n">并将下列代码保存到此文件中</span><span class="err">：</span>
+
+<span class="p">```</span><span class="n">powershell</span>
+<span class="nv">@php</span> <span class="s2">&#34;%~dp0composer.phar&#34;</span> <span class="p">%*</span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+<p>最后重新打开一个命令行窗口试一试执行 <code>composer --version</code> 看看是否正确输出版本号。</p>
+
+<p>如果输出正确的版本信息，则composer安装成功。</p>
+
+<p>#####全局配置镜像</p>
+
+<p>所有项目都会使用该镜像地址：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">composer</span> <span class="n">config</span> <span class="n">-g</span> <span class="n">repo</span><span class="p">.</span><span class="n">packagist</span> <span class="n">composer</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">aliyun</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">composer</span><span class="p">/</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>取消配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">composer</span> <span class="n">config</span> <span class="n">-g</span> <span class="p">-</span><span class="n">-unset</span> <span class="n">repos</span><span class="p">.</span><span class="n">packagist</span></code></pre></td></tr></table>
+</div>
+</div>
+<blockquote>
+<p>Tips: composer 命令增加<code>-vvv</code>可输出详细的信息</p>
+</blockquote>
+
+<h4 id="用-composer-构建-laravel-项目">用<code>Composer</code>构建<code>laravel</code>项目</h4>
+
+<p>选择要创建项目的目录，cmd进入，执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">composer</span> <span class="n">-vvv</span> <span class="n">create-project</span> <span class="n">laravel</span><span class="p">/</span><span class="n">laravel</span> <span class="n">projectName</span> <span class="p">-</span><span class="n">-prefer-dist</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>安装完成后，查看laravel版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">php</span> <span class="n">artisan</span> <span class="n">-V</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>此时，使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">php</span> <span class="n">artisan</span> <span class="n">serve</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>就已经可以浏览项目了，但是我们要用Apache，所以还需要对apache进行一些相关配置：</p>
+
+<ul>
+<li>打开`<code>mod_rewrite</code>：Laravel 框架中自带的 <code>.htaccess</code> 文件支持隐藏 URL 中的 <code>index.php</code>，如过你的 Laravel 应用使用 Apache 作为服务器，需要先确保 Apache 启用了 <code>mod_rewrite</code> 模块以支持 <code>.htaccess</code> 解析</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">  LoadModule rewrite_module modules/mod_rewrite.so</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li><p>配置一个虚拟主机：不适用之前配置的默认路径，创建一个虚拟主机</p>
+
+<ul>
+<li>打开<code>extra/httpd-vhosts</code>文件，将一下配置填写入配置文件中</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">&lt;VirtualHost *:80&gt;
+    ServerAdmin xxx@xxx.com <span class="c1">#随意填写，基本不用</span>
+    DocumentRoot <span class="s2">&#34;c:/xxx/xxx/xxx/yourProject/public&#34;</span> <span class="c1">#laravel项目的public目录</span>
+    ServerName www.xxx.com <span class="c1">#设置主机名，该主机名要在系统的hosts文件中配置好</span>
+    ServerAlias xxx.com
+    &lt;Directory <span class="s2">&#34;c:/xxx/xxx/xxx/yourProject/public&#34;</span>&gt; <span class="c1">#该路径必须与上面的root一直，此处是设置权限</span>
+        AllowOverride All   <span class="c1">#设置为all，允许覆盖配置</span>
+        Options -Indexes +FollowSymLinks <span class="c1">#去掉索引目录 追加连接访问限制</span>
+        Require all granted <span class="c1">#授权访问</span>
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+    </code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>在<code>httpd.conf</code>中打开虚拟主机的配置</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Virtual hosts</span>
+Include conf/extra/httpd-vhosts.conf</code></pre></td></tr></table>
+</div>
+</div>
+<ul>
+<li>浏览器输入<code>www.xxx.com</code>验证，可以访问则配置成功</li>
+</ul></li>
+</ul>
+
+<p>####安装php <code>xdebug</code></p>
+
+<p>到官网下载对应php版本的xdebug：<a href="https://xdebug.org/download">https://xdebug.org/download</a></p>
+
+<p>将下载下来的dll放到<code>ext</code>目录中，然后在php.ini中追加配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">zend_extension</span> <span class="o">=</span> php_xdebug-2.9.8-7.4-vc15-x86_64.dll
+xdebug.remote_enable <span class="o">=</span> On
+xdebug.remote_host <span class="o">=</span> localhost
+xdebug.remote_port <span class="o">=</span> <span class="m">9100</span></code></pre></td></tr></table>
+</div>
+</div>
+<h5 id="设置phpstorm">设置phpStorm</h5>
+
+<p><code>File-&gt;Setting</code>，然后找到<code>Languages&amp;Framework -&gt; PHP -&gt; Debug</code>，设置<code>Debug Port</code>为<code>9100</code>；</p>
+
+<p>然后配置<code>Languages&amp;Framework -&gt; PHP -&gt; Servers</code> ，追加前面我们设置的虚拟主机</p>
+
+<p><img src="/images/image-20201002001839919.png" alt="image-20201002001839919" /></p>
+
+<p>然后找到phpStorm右上角的电话图标，开始监听php debug的链接。</p>
+
+<h5 id="postman测试">Postman测试</h5>
+
+<p>我们可以利用<code>Postman</code>新建GET请求，添加GET参数<code>XDEBUG_SESSION_START</code>值为<code>任意</code>，发送后就可以在我们设置的断点处开始debug。</p>
+
+<p>#####浏览器测试</p>
+
+<p>当然我们也可以用浏览器调试(不需要单独的浏览器插件)，配置如下：</p>
+
+<p>Add Configurations&hellip;</p>
+
+<p><img src="/images/image-20201002002602865.png" alt="image-20201002002602865" /></p>
+
+<p>然后点击小虫子图标，打开一个浏览器会话访问设置的网址，自带<code>XDEBUG_SESSION_START</code></p>
+
+<h4 id="laravel项目追加-debugbar">laravel项目追加<code>Debugbar</code></h4>
+
+<p>使用 Composer 安装该扩展包</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">composer</span> <span class="n">-vvv</span> <span class="n">require</span> <span class="n">barryvdh</span><span class="p">/</span><span class="n">laravel-debugbar</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>安装完成后，在 <code>config/app.php</code> 中注册服务提供者到 <code>providers</code> 数组。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">Barryvdh\Debugbar\ServiceProvider::class,</code></pre></td></tr></table>
+</div>
+</div>
+<p>添加门面：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-php" data-lang="php">&#39;Debugbar&#39; =&gt; Barryvdh\Debugbar\Facade::class,</code></pre></td></tr></table>
+</div>
+</div>
+<p>最后生成配置文件到config目录：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">php</span> <span class="n">artisan</span> <span class="n">vendor</span><span class="err">:</span><span class="n">publish</span> <span class="p">-</span><span class="n">-provider</span><span class="p">=</span><span class="s2">&#34;Barryvdh\Debugbar\ServiceProvider&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>config目录中就会生成debugbar.php设定文件。访问项目的虚拟主机地址，在页面下方就出现了<code>debugbar</code></p>
+
+<p><img src="/images/image-20201002003819085.png" alt="image-20201002003819085" /></p>
+
+<p>至此，<code>laravel</code>的开发环境就配置结束了</p>
+
+<p>（全文完）</p>
     </div>
 
     <div class="post-copyright">

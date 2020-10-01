@@ -27,7 +27,7 @@
       <pubDate>Thu, 01 Oct 2020 22:17:35 +0800</pubDate>
       
       <guid>https://lostcosta.github.io/post/laravel_configuration/</guid>
-      <description>&lt;p&gt;本文将详细介绍如何在windows环境中配置Laravel框架的开发环境。该框架基于PHP的一个高效的网站开发框架，通过它可以非常快速的构建网站。本文将从PHP环境的配置、Apache环境的配置、composer工具的安装、laravel项目的构建、以及debug环境的配置等进行详细说明。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本文将详细介绍如何在windows环境中配置&lt;code&gt;Laravel&lt;/code&gt;框架的开发环境。该框架基于PHP的一个高效的网站开发框架，通过它可以非常快速的构建网站。本文将从PHP环境的配置、Apache环境的配置、composer工具的安装、laravel项目的构建、以及debug环境的配置等进行详细说明。&lt;/p&gt;</description>
     </item>
     
     <item>
