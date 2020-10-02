@@ -50,7 +50,7 @@
 
 <meta itemprop="datePublished" content="2020-10-01T22:17:35&#43;08:00" />
 <meta itemprop="dateModified" content="2020-10-01T22:17:35&#43;08:00" />
-<meta itemprop="wordCount" content="2511">
+<meta itemprop="wordCount" content="2460">
 
 
 
@@ -131,8 +131,8 @@
         <div class="post-category">
             <a href="/categories/php/"> php </a>
             </div>
-          <span class="more-meta"> 约 2511 字 </span>
-          <span class="more-meta"> 预计阅读 6 分钟 </span>
+          <span class="more-meta"> 约 2460 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
     </header>
@@ -150,6 +150,10 @@
 <li><a href="#配置主目录">配置主目录</a></li>
 <li><a href="#配置默认站点">配置默认站点</a></li>
 <li><a href="#加载php相关配置">加载PHP相关配置</a></li>
+</ul></li>
+<li><a href="#安装composer">安装composer</a>
+<ul>
+<li><a href="#全局配置镜像">全局配置镜像</a></li>
 </ul></li>
 <li><a href="#用-composer-构建-laravel-项目">用<code>Composer</code>构建<code>laravel</code>项目</a></li>
 <li><a href="#安装php-xdebug">安装php <code>xdebug</code></a>
@@ -272,64 +276,44 @@ AddType application/x-httpd-php .php</code></pre></td></tr></table>
 
 <p><img src="/images/image-20201001230642983.png" alt="phpinfo" /></p>
 
-<blockquote>
-<p>Tips：apache判断配置文件是否有错，可以cmd进入到bin目录，执行</p>
+<p>Tips：apache判断配置文件是否有错，可以cmd进入到bin目录，执行下面命令，显示OK即为配置正确</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">&gt;</span> <span class="n">httpd</span> <span class="n">-t</span>
-<span class="p">&gt;</span> <span class="p">```</span>
-<span class="p">&gt;</span>
-<span class="p">&gt;</span> <span class="n">显示OK即为配置正确</span>
-
-<span class="n">到此apache的PHP配置还差最后一步</span><span class="err">：</span><span class="n">配置</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">ini</span><span class="p">`</span><span class="n">文件</span><span class="err">，</span><span class="n">首先把</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">exe</span><span class="p">`</span><span class="n">目录下的</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">ini-development</span><span class="p">`</span><span class="n">文件复制一份并命名为</span><span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">ini</span><span class="p">`</span><span class="err">，</span><span class="n">然后打开php</span><span class="p">.</span><span class="n">ini进行配置</span><span class="err">：</span>
-
-<span class="p">-</span> <span class="n">打开</span><span class="p">`</span><span class="n">extension_dir</span> <span class="p">=</span> <span class="s2">&#34;ext&#34;</span><span class="p">`</span>
-<span class="p">-</span> <span class="n">根据laravel的版本要求</span><span class="err">，</span><span class="n">打开对应扩展</span><span class="err">：</span><span class="p">`</span><span class="n">curl</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">fileinfo</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">mbstring</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">openssl</span><span class="p">`</span><span class="err">、</span><span class="p">`</span><span class="n">pdo_mysql</span><span class="p">`</span>
-
-<span class="n">ok</span><span class="err">，</span><span class="n">apache的PHP配置完毕</span><span class="err">！</span>
-
-<span class="c">## 安装composer</span>
-
-<span class="n">因为composer服务器在外网</span><span class="err">，</span><span class="n">速度方面很慢</span><span class="err">，</span><span class="n">因此直接用阿里云提供的composer及其镜像即可</span><span class="err">。</span>
-
-<span class="n">下载地址</span><span class="err">:</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">mirrors</span><span class="p">.</span><span class="n">aliyun</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">composer</span><span class="p">/</span><span class="n">composer</span><span class="p">.</span><span class="n">phar</span>
-
-<span class="n">将下载下来的</span><span class="p">`</span><span class="n">composer</span><span class="p">.</span><span class="n">phar</span><span class="p">`</span><span class="n">放到php目录</span><span class="err">，，</span><span class="n">也就是和</span> <span class="p">`</span><span class="n">php</span><span class="p">.</span><span class="n">exe</span><span class="p">`</span> <span class="n">在同一级目录</span><span class="err">。</span><span class="n">在</span> <span class="n">PHP</span> <span class="n">安装目录下新建一个</span> <span class="p">`</span><span class="n">composer</span><span class="p">.</span><span class="n">bat</span><span class="p">`</span> <span class="n">文件</span><span class="err">，</span><span class="n">并将下列代码保存到此文件中</span><span class="err">：</span>
-
-<span class="p">```</span><span class="n">powershell</span>
-<span class="nv">@php</span> <span class="s2">&#34;%~dp0composer.phar&#34;</span> <span class="p">%*</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-powershell" data-lang="powershell">  <span class="n">httpd</span> <span class="n">-t</span></code></pre></td></tr></table>
 </div>
-</div></blockquote>
+</div>
+<p>到此apache的PHP配置还差最后一步：配置<code>php.ini</code>文件，首先把<code>php.exe</code>目录下的<code>php.ini-development</code>文件复制一份并命名为<code>php.ini</code>，然后打开php.ini进行配置：</p>
 
+<ul>
+<li>打开<code>extension_dir = &quot;ext&quot;</code></li>
+<li>根据laravel的版本要求，打开对应扩展：<code>curl</code>、<code>fileinfo</code>、<code>mbstring</code>、<code>openssl</code>、<code>pdo_mysql</code></li>
+</ul>
+
+<p>ok，apache的PHP配置完毕！</p>
+
+<h2 id="安装composer">安装composer</h2>
+
+<p>因为composer服务器在外网，速度方面很慢，因此直接用阿里云提供的composer及其镜像即可。</p>
+
+<p>下载地址: <a href="https://mirrors.aliyun.com/composer/composer.phar">https://mirrors.aliyun.com/composer/composer.phar</a></p>
+
+<p>将下载下来的<code>composer.phar</code>放到php目录，，也就是和 <code>php.exe</code> 在同一级目录。在 PHP 安装目录下新建一个 <code>composer.bat</code> 文件，并将下列代码保存到此文件中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">@php</span> <span class="s2">&#34;%~dp0composer.phar&#34;</span> <span class="p">%*</span></code></pre></td></tr></table>
+</div>
+</div>
 <p>最后重新打开一个命令行窗口试一试执行 <code>composer --version</code> 看看是否正确输出版本号。</p>
 
 <p>如果输出正确的版本信息，则composer安装成功。</p>
 
-<p>#####全局配置镜像</p>
+<h3 id="全局配置镜像">全局配置镜像</h3>
 
 <p>所有项目都会使用该镜像地址：</p>
 <div class="highlight"><div class="chroma">
@@ -414,7 +398,6 @@ AddType application/x-httpd-php .php</code></pre></td></tr></table>
 </span><span class="lnt"> 9
 </span><span class="lnt">10
 </span><span class="lnt">11
-</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">&lt;VirtualHost *:80&gt;
@@ -427,8 +410,7 @@ AddType application/x-httpd-php .php</code></pre></td></tr></table>
         Options -Indexes +FollowSymLinks <span class="c1">#去掉索引目录 追加连接访问限制</span>
         Require all granted <span class="c1">#授权访问</span>
     &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-    </code></pre></td></tr></table>
+&lt;/VirtualHost&gt;</code></pre></td></tr></table>
 </div>
 </div>
 <ul>
