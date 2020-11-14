@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>laravel8使用bootstrap框架 - Brein&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Brein" /><meta name="description" content="laravel8使用bootstrap框架" /><meta name="keywords" content="laravel, bootstrap" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+
+
+<link rel="canonical" href="https://lostcosta.github.io/post/laravel_bootstrap_install/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="laravel8使用bootstrap框架" />
+<meta property="og:description" content="laravel8使用bootstrap框架" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lostcosta.github.io/post/laravel_bootstrap_install/" /><meta property="article:published_time" content="2020-11-14T13:02:56&#43;08:00"/>
+<meta property="article:modified_time" content="2020-11-14T13:02:56&#43;08:00"/>
+
+<meta itemprop="name" content="laravel8使用bootstrap框架">
+<meta itemprop="description" content="laravel8使用bootstrap框架">
+
+
+<meta itemprop="datePublished" content="2020-11-14T13:02:56&#43;08:00" />
+<meta itemprop="dateModified" content="2020-11-14T13:02:56&#43;08:00" />
+<meta itemprop="wordCount" content="941">
+
+
+
+<meta itemprop="keywords" content="laravel,bootstrap," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="laravel8使用bootstrap框架"/>
+<meta name="twitter:description" content="laravel8使用bootstrap框架"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Brein&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Brein&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">laravel8使用bootstrap框架</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020年11月14日 13时02分56秒 </span>
+        <div class="post-category">
+            <a href="/categories/php/"> php </a>
+            </div>
+          <span class="more-meta"> 约 941 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#laravel-引入-bootstrap"><code>laravel</code>引入<code>bootstrap</code></a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本文将详细介绍如何在新建的<code>Laravel</code>项目中引入bootstrap前端框架。</p>
+
+<h2 id="laravel-引入-bootstrap"><code>laravel</code>引入<code>bootstrap</code></h2>
+
+<p>首先需要安装<code>laravel/ui</code>编写器包（前提是已经配置好<code>composer</code>）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">composer require laravel/ui:^3.0 --dev</pre></td></tr></table>
+</div>
+</div>
+<p>安装完 <code>laravel/ui</code> 包后，可以使用 <code>ui</code> artisan 命令安装前端脚手架:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">// 生成基本脚手架
+php artisan ui bootstrap
+php artisan ui vue
+php artisan ui react
+
+// 生成 登录/注册 脚手架...
+php artisan ui bootstrap --auth
+php artisan ui vue --auth
+php artisan ui react --auth</pre></td></tr></table>
+</div>
+</div>
+<p>这里我们要安装的是<code>bootstrap</code>脚手架：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">php artisan ui bootstrap</pre></td></tr></table>
+</div>
+</div>
+<p>脚手架安装好以后，会在<code>laravel</code>框架相关配置文件中写入一些配置：</p>
+
+<p>在 <code>resources/js/bootstrap.js</code>中，我们可以看到对 <code>bootstrap</code> 的<code>js</code>库的引入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">try {
+    window.Popper = require(&#39;popper.js&#39;).default;
+    window.$ = window.jQuery = require(&#39;jquery&#39;);
+
+    require(&#39;bootstrap&#39;);
+} catch (e) {}</pre></td></tr></table>
+</div>
+</div>
+<p>然后在 <code>resources/js/app.js</code> 中又引入了这个 <code>bootstrap.js</code> 文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">require(&#39;./bootstrap&#39;);</pre></td></tr></table>
+</div>
+</div>
+<p>这样我们在编译前端资源的时候就会将 <code>bootstrap</code>相关<code>js</code>文件加载进来。对于 Bootstrap 所需 CSS 文件，会在 <code>resources/sass/app.scss</code> 中引入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">@import &#39;~bootstrap/scss/bootstrap&#39;;</pre></td></tr></table>
+</div>
+</div>
+<p>执行<code>npm</code>命令安装各种依赖包（<code>bootstrap</code>依赖<code>JQuery</code>，执行前确认下<code>package.json</code>中是否已经包含）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">npm install</pre></td></tr></table>
+</div>
+</div>
+<p>该命令会下载 node_modules 文件夹，里面就包括了 <code>bootstrap</code>、<code>JQuery</code>等等<code>package.json</code>中的依赖包。</p>
+
+<p>一旦已经使用 <code>npm install</code> 安装了依赖包，就可以运行 <code>npm run dev</code> 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">npm run dev</pre></td></tr></table>
+</div>
+</div>
+<p>该命令通过 <a href="https://learnku.com/docs/laravel/6.x/mix#working-with-stylesheets">Laravel Mix</a>（Laravel Mix 是对 <a href="https://www.webpackjs.com/">Webpack</a> 进行封装后提供给 Laravel 项目使用的前端打包工具）来编译前端资源了（ 可以将 SASS 编译为原生 CSS等）。该命令定义在 <code>package.json</code> 中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">&#34;scripts&#34;: {
+        &#34;dev&#34;: &#34;npm run development&#34;,
+        &#34;development&#34;: &#34;cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js&#34;,
+        ...
+        },</pre></td></tr></table>
+</div>
+</div>
+<p><code>Laravel Mix</code> 的配置文件就是项目根目录下的 <code>webpack.mix.js</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">const mix = require(&#39;laravel-mix&#39;);
+
+mix.js(&#39;resources/js/app.js&#39;, &#39;public/js&#39;)
+   .sass(&#39;resources/sass/app.scss&#39;, &#39;public/css&#39;);</pre></td></tr></table>
+</div>
+</div>
+<p>从 <code>node_modules</code> 中引入 <code>laravel-mix</code> 库，然后运用它提供的 <code>js</code> 和 <code>sass</code> 方法将 <code>resources/js/app.js</code> 编译打包后输出到 <code>public/js/app.js</code>，将 <code>resources/sass/app.scss</code> （Sass文件）编译打包后输出到 <code>public/css/app.css</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma"> DONE  Compiled successfully in 12807ms                                                                                                                                                                                     下午12:19:25
+
+       Asset      Size   Chunks             Chunk Names
+/css/app.css   178 KiB  /js/app  [emitted]  /js/app
+  /js/app.js  1.08 MiB  /js/app  [emitted]  /js/app
+
+C:\Users\zhang\Documents\MyDOC\WorkSource\PHP\phpStudy&gt;</pre></td></tr></table>
+</div>
+</div>
+<p>这样，我们就可以项目的前端文件下引入 <code>/css/app.css</code> 和 <code>/js/app.js</code> 使用 Bootstrap 提供的样式和 JavaScript 组件了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-HTML" data-lang="HTML"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-HTML" data-lang="HTML"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Laravel<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;css/app.css&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+ 
+        <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;js/app.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>最后补充：</p>
+
+<p>实时监听 <code>sass</code> 文件和 <code>js</code> 源文件的修改，使用以下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">npm run watch-poll</pre></td></tr></table>
+</div>
+</div>
+<p>解决浏览器缓存问题:</p>
+
+<p>打开 <code>webpack.min.js</code> 文件，在<code>.sass()</code> 方法后添加<code>.version()</code> 方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">mix.js(&#39;resources/js/app.js&#39;, &#39;public/js&#39;)
+    .sass(&#39;resources/sass/app.scss&#39;, &#39;public/css&#39;).version();</pre></td></tr></table>
+</div>
+</div>
+<p>（全文完）</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Brein</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2020年11月14日 13时02分56秒</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
+  </p>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/laravel/">laravel</a>
+          <a href="/tags/bootstrap/">bootstrap</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/laravel_configuration/">
+            <span class="next-text nav-default">Laravel开发环境搭建</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://lostcosta.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    
+    
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Brein. All Rights Reserved</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
