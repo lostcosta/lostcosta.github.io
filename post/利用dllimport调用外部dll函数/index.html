@@ -23,10 +23,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.84.4 with theme even" />
 
 
-<link rel="canonical" href="https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B0/" />
+<link rel="canonical" href="https://www.coolgogoing.com/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B0/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -34,28 +34,23 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
 <meta property="og:title" content="C#如何调用C&#43;&#43;函数" />
 <meta property="og:description" content="C#调用C&#43;&#43;API的方法总结" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lostcosta.github.io/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B0/" /><meta property="article:published_time" content="2019-01-14T22:28:03&#43;08:00"/>
-<meta property="article:modified_time" content="2019-01-14T22:28:03&#43;08:00"/>
+<meta property="og:url" content="https://www.coolgogoing.com/post/%E5%88%A9%E7%94%A8dllimport%E8%B0%83%E7%94%A8%E5%A4%96%E9%83%A8dll%E5%87%BD%E6%95%B0/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-14T22:28:03+08:00" />
+<meta property="article:modified_time" content="2019-01-14T22:28:03+08:00" />
 
 <meta itemprop="name" content="C#如何调用C&#43;&#43;函数">
-<meta itemprop="description" content="C#调用C&#43;&#43;API的方法总结">
-
-
-<meta itemprop="datePublished" content="2019-01-14T22:28:03&#43;08:00" />
-<meta itemprop="dateModified" content="2019-01-14T22:28:03&#43;08:00" />
-<meta itemprop="wordCount" content="2190">
-
-
-
-<meta itemprop="keywords" content="开发技巧,知识点," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="C#调用C&#43;&#43;API的方法总结"><meta itemprop="datePublished" content="2019-01-14T22:28:03+08:00" />
+<meta itemprop="dateModified" content="2019-01-14T22:28:03+08:00" />
+<meta itemprop="wordCount" content="2194">
+<meta itemprop="keywords" content="开发技巧,知识点," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="C#如何调用C&#43;&#43;函数"/>
 <meta name="twitter:description" content="C#调用C&#43;&#43;API的方法总结"/>
 
@@ -94,12 +89,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">Brein&#39;s blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -116,6 +120,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -131,7 +136,7 @@
         <div class="post-category">
             <a href="/categories/.net%E5%BC%80%E5%8F%91/"> .Net开发 </a>
             </div>
-          <span class="more-meta"> 约 2190 字 </span>
+          <span class="more-meta"> 约 2194 字 </span>
           <span class="more-meta"> 预计阅读 5 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -140,39 +145,28 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    <nav id="TableOfContents">
-<ul>
-<li><a href="#方法一-利用dllimport特性导入">方法一：利用DLLImport特性导入</a></li>
-<li><a href="#方法二-利用函数指针调用">方法二：利用函数指针调用</a></li>
-</ul>
-</nav>
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
     <div class="post-content">
-      <p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1547488655/MyPic/02.jpg" alt="IMG" title="IMG" /></p>
-
+      <p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1547488655/MyPic/02.jpg" alt="IMG" title="IMG"></p>
 <p>C#作为.NET的主力开发语言，当然也是主要运行在Windows环境中了。而在日常的开发中，时不时会遇到项目需要调用环境API或者基于Windows开发的C++程序的某个函数的情况。
 本次我就来介绍下在C#的程序中，如何调用系统API以及C++程序的函数接口。</p>
-
 <p>最近我在做的一个项目（C#语言开发）遇到了需要调用C++的函数的问题，经过一番网上资料的汇总，利用前人造好的轮子亲身实践了一把，成功实现了需求。下面就把我收集的方法
 做个总结，方便以后查找。</p>
-
-<h1 id="方法一-利用dllimport特性导入">方法一：利用DLLImport特性导入</h1>
-
+<h1 id="方法一利用dllimport特性导入">方法一：利用DLLImport特性导入</h1>
 <p>.NET Framework类库(FCL)定义了几百个定制特性，可以将它们应用于自己的源代码中的各个元素。例如：</p>
-
 <ul>
 <li>将DllImport特性应用于方法，告诉CLR该方法的实现位于制定DLL的非托管代码中。</li>
 <li>将Serializable特性应用于类，告诉序列化格式化程序一个实例的字段可以序列化和反序列化。</li>
 <li>将AssemblyVersion特性应用于程序集，设置程序集的版本号。</li>
 <li>将Flags特性应用于枚举类型，枚举类型就成了位标志(bit flag)集合。</li>
 </ul>
-
-<p>本文利用的特性就是：DLLImport。它在命名空间是<code>System.Runtime.InteropServices</code>。要将该特性应用于方法，则必须至少提供包含入口点的DLL名称。<br />
+<p>本文利用的特性就是：DLLImport。它在命名空间是<code>System.Runtime.InteropServices</code>。要将该特性应用于方法，则必须至少提供包含入口点的DLL名称。<br>
 DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.runtime.interopservices.dllimportattribute?view=netframework-4.7.2">官方文档</a>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -187,8 +181,8 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="na">[System.AttributeUsage(System.AttributeTargets.Method, Inherited=false)]
-</span><span class="na">[System.Runtime.InteropServices.ComVisible(true)]</span>
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="na">[System.AttributeUsage(System.AttributeTargets.Method, Inherited=false)]</span>
+<span class="na">[System.Runtime.InteropServices.ComVisible(true)]</span>
 <span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">DllImportAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
 <span class="p">{</span>
   <span class="k">public</span> <span class="n">DllImportAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">DllName</span><span class="p">){...}</span> <span class="c1">//构造函数，传入dll文件的位置（必须）
@@ -199,14 +193,14 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
 </span><span class="c1"></span>  <span class="k">public</span> <span class="kt">bool</span> <span class="n">ExactSpelling</span><span class="p">;</span>                  <span class="c1">//是否必须与指示的入口点拼写完全一致，默认false
 </span><span class="c1"></span>  <span class="k">public</span> <span class="kt">bool</span> <span class="n">PreserveSig</span><span class="p">;</span>                    <span class="c1">//方法的签名是被保留还是被转换
 </span><span class="c1"></span>  <span class="c1">//etc...
-</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>在本次的项目开发中，需要调用既存的非托管C++代码，该代码的作用是发送电文，并取得远端机器的特定返回数据。该类导出了一个接口函数<code>int DataReq(DataInfo&amp; info)</code>,
+</div><p>在本次的项目开发中，需要调用既存的非托管C++代码，该代码的作用是发送电文，并取得远端机器的特定返回数据。该类导出了一个接口函数<code>int DataReq(DataInfo&amp; info)</code>,
 该函数的返回值为<code>INT</code>类型，传入参数为一个结构体。我要做的就是在C#工程中构造一个结构体，并在调用该函数的时候，将结构体传递过去。下面是代码实现：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -233,8 +227,8 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
 <pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">class</span> <span class="nc">TestCallCPPFunc</span>
 <span class="p">{</span>
   <span class="c1">//特别注意：m_strDllPath必须是const类型，因为DLLImport特性不支持动态dll路径,所以必须是常量。
-</span><span class="c1"></span>  <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">m_strDllPath</span> <span class="p">=</span> <span class="s">@&#34;c:/interpub/wwwroot/somewhere/TestDataReq.dll&#34;</span><span class="p">;</span><span class="na">
-</span><span class="na">  [DLLImport(m_strDllpath, EntryPoint=&#34;DataReq&#34;)]</span>
+</span><span class="c1"></span>  <span class="k">private</span> <span class="k">const</span> <span class="kt">string</span> <span class="n">m_strDllPath</span> <span class="p">=</span> <span class="s">@&#34;c:/interpub/wwwroot/somewhere/TestDataReq.dll&#34;</span><span class="p">;</span>
+<span class="na">  [DLLImport(m_strDllpath, EntryPoint=&#34;DataReq&#34;)]</span>
   <span class="k">private</span> <span class="k">extern</span> <span class="k">static</span> <span class="kt">int</span> <span class="n">DataReq</span><span class="p">(</span><span class="k">ref</span> <span class="n">DataInfo</span> <span class="n">info</span><span class="p">);</span>
 
   <span class="k">public</span> <span class="k">void</span> <span class="n">TestCall</span><span class="p">()</span>
@@ -251,35 +245,29 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
 <span class="k">struct</span> <span class="nc">DataInfo</span>
 <span class="p">{</span>
   <span class="c1">//some fields
-</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>到此，利用DLLImport导入非托管dll函数的方法就完成了。仔细看代码，你可能会发现，我在声明dll路径时用到了<code>const</code>，这是因为DLLImport特性必须传入固定的dll路径，
+</div><p>到此，利用DLLImport导入非托管dll函数的方法就完成了。仔细看代码，你可能会发现，我在声明dll路径时用到了<code>const</code>，这是因为DLLImport特性必须传入固定的dll路径，
 或者只写dll文件的名称，例如：<code>kernel32.dll</code>。只传入dll名称的场合，DLLImport会按照以下顺序自动去寻找dll的存储路径：</p>
-
 <ul>
 <li>项目所在路径</li>
 <li>System32目录</li>
 <li>环境变量中设置的目录</li>
 </ul>
-
 <p>只要将需要调用的dll拷贝到这三个目录下面，就可以不用写全路径了。看到这里，可能会有个疑问，这个路径一定要是写死的吗？如果我的路径是个动态的，又该如何处理呢？
- 因为已知DLLImport并不支持传给它一个<strong>变量</strong>。这就引出了我们第二调用DLL方法，请继续往下看。</p>
-
-<h1 id="方法二-利用函数指针调用">方法二：利用函数指针调用</h1>
-
+因为已知DLLImport并不支持传给它一个<strong>变量</strong>。这就引出了我们第二调用DLL方法，请继续往下看。</p>
+<h1 id="方法二利用函数指针调用">方法二：利用函数指针调用</h1>
 <p>还是上面的例子，我们换一个思路去解决这个问题。要利用函数指针，我们就要用到系统dll(<code>kernel32.dll</code>)提供的三个API：</p>
-
 <ul>
 <li><code>IntPtr LoadLibary(String path)</code>用来取得指定dll的指针(IntPtr是一个指针类型)，有了它就可以定位该dll，这也就解决了动态PATH的问题</li>
 <li><code>IntPtr GetProcAddress(IntPtr lib, String funcName)</code>用来取得指定dll中的某个函数的指针</li>
 <li><code>bool FreeLibary(IntPtr lib)</code>用来释放掉指针</li>
 </ul>
-
 <p>利用上面三个系统API，我们来组织下调用代码：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -333,12 +321,12 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">class</span> <span class="nc">DllInvokeClass</span>
-<span class="p">{</span><span class="na">
-</span><span class="na">  [DLLImport(&#34;kernel32.dll&#34;)]</span>
-  <span class="k">private</span> <span class="k">extern</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">LoadLibary</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">);</span><span class="na">
-</span><span class="na">  [DLLImport(&#34;kernel32.dll&#34;)]</span>
-  <span class="k">private</span> <span class="k">extern</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetProcAddress</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">lib</span><span class="p">,</span> <span class="kt">string</span> <span class="n">funcname</span><span class="p">);</span><span class="na">
-</span><span class="na">  [DLLImport(&#34;kernel32.dll&#34;)]</span>
+<span class="p">{</span>
+<span class="na">  [DLLImport(&#34;kernel32.dll&#34;)]</span>
+  <span class="k">private</span> <span class="k">extern</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">LoadLibary</span><span class="p">(</span><span class="kt">string</span> <span class="n">path</span><span class="p">);</span>
+<span class="na">  [DLLImport(&#34;kernel32.dll&#34;)]</span>
+  <span class="k">private</span> <span class="k">extern</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetProcAddress</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">lib</span><span class="p">,</span> <span class="kt">string</span> <span class="n">funcname</span><span class="p">);</span>
+<span class="na">  [DLLImport(&#34;kernel32.dll&#34;)]</span>
   <span class="k">private</span> <span class="k">extern</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">FreeLibary</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">lib</span><span class="p">);</span>
 
   <span class="k">private</span> <span class="n">IntPtr</span> <span class="n">pLib</span><span class="p">;</span> <span class="c1">//dll的指针
@@ -382,13 +370,12 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
 <span class="k">struct</span> <span class="nc">DataInfo</span>
 <span class="p">{</span>
   <span class="c1">//some fields
-</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>以上就是第二种调用指定dll中某个函数的方法了，值得注意的是，该方法利用到了C#中委托的概念，其实委托也可以理解为C#中的函数指针，
+</div><p>以上就是第二种调用指定dll中某个函数的方法了，值得注意的是，该方法利用到了C#中委托的概念，其实委托也可以理解为C#中的函数指针，
 它规定了可以指向的函数的返回值以及参数列表。上面的例子将返回的委托赋值给了我们自己声明的委托变量，即指针的赋值，使得我们声明的委托
 指向了该函数。</p>
-
 <p>（全文完）</p>
     </div>
 
@@ -399,14 +386,18 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2019年1月14日 22时28分03秒</span>
+    <span class="item-content">
+        2019年1月14日 22时28分03秒
+        
+    </span>
   </p>
   
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
     <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
   </p>
-</div><footer class="post-footer">
+</div>
+<footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/">开发技巧</a>
           <a href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
@@ -428,14 +419,18 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
-  <a href="https://lostcosta.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.coolgogoing.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
@@ -444,7 +439,7 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    主题 -
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
@@ -454,13 +449,13 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
   </div>
 
   <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Brein. All Rights Reserved</span>
+    &copy;
+    2018 -
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span>Brein. All Rights Reserved</span>
+  </span>
+  <span class="power-by">
+    京ICP备2021020827号-1
   </span>
 </div>
     </footer>
@@ -472,7 +467,10 @@ DLLImport的定义如下，详细定义请参照<a href="https://docs.microsoft.
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 

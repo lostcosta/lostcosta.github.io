@@ -1,32 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>laravel on Brein&#39;s blog</title>
-    <link>https://lostcosta.github.io/tags/laravel/</link>
+    <link>https://www.coolgogoing.com/tags/laravel/</link>
     <description>Recent content in laravel on Brein&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Brein. All Rights Reserved</copyright>
-    <lastBuildDate>Sat, 14 Nov 2020 13:02:56 +0800</lastBuildDate>
-    
-	<atom:link href="https://lostcosta.github.io/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 14 Nov 2020 13:02:56 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>laravel8使用bootstrap框架</title>
-      <link>https://lostcosta.github.io/post/laravel_bootstrap_install/</link>
+      <link>https://www.coolgogoing.com/post/laravel_bootstrap_install/</link>
       <pubDate>Sat, 14 Nov 2020 13:02:56 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/post/laravel_bootstrap_install/</guid>
+      <guid>https://www.coolgogoing.com/post/laravel_bootstrap_install/</guid>
       <description>&lt;p&gt;本文将详细介绍如何在新建的&lt;code&gt;Laravel&lt;/code&gt;项目中引入bootstrap前端框架。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Laravel开发环境搭建</title>
-      <link>https://lostcosta.github.io/post/laravel_configuration/</link>
+      <link>https://www.coolgogoing.com/post/laravel_configuration/</link>
       <pubDate>Thu, 01 Oct 2020 22:17:35 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/post/laravel_configuration/</guid>
+      <guid>https://www.coolgogoing.com/post/laravel_configuration/</guid>
       <description>&lt;p&gt;本文将详细介绍如何在windows环境中配置&lt;code&gt;Laravel&lt;/code&gt;框架的开发环境。该框架基于PHP的一个高效的网站开发框架，通过它可以非常快速的构建网站。本文将从PHP环境的配置、Apache环境的配置、composer工具的安装、laravel项目的构建、以及debug环境的配置等进行详细说明。&lt;/p&gt;</description>
     </item>
     

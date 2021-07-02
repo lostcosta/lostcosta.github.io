@@ -1,27 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on Brein&#39;s blog</title>
-    <link>https://lostcosta.github.io/tags/markdown/</link>
+    <link>https://www.coolgogoing.com/tags/markdown/</link>
     <description>Recent content in Markdown on Brein&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Brein. All Rights Reserved</copyright>
-    <lastBuildDate>Mon, 11 Dec 2017 00:41:30 +0000</lastBuildDate>
-    
-	<atom:link href="https://lostcosta.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 11 Dec 2017 00:41:30 +0000</lastBuildDate><atom:link href="https://www.coolgogoing.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown语法精要</title>
-      <link>https://lostcosta.github.io/post/markdown%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
+      <link>https://www.coolgogoing.com/post/markdown%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 11 Dec 2017 00:41:30 +0000</pubDate>
       
-      <guid>https://lostcosta.github.io/post/markdown%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://lostcosta.github.io/images/01.jpg&#34; alt=&#34;title&#34; /&gt;&lt;/p&gt;
-
+      <guid>https://www.coolgogoing.com/post/markdown%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.coolgogoing.com/images/01.jpg&#34; alt=&#34;title&#34;&gt;&lt;/p&gt;
 &lt;p&gt;首次接触Markdown是在某个独立博客上，当时在搜一个技术上的问题，结果一进去，就被它的排版吸引了。后果就是想搜的东西没有搜到，却开始了我的Markdown之旅&amp;hellip;&lt;/p&gt;
-
 &lt;p&gt;找了几个常用到的介绍下，也是学完Markdown的一个小总结吧。&lt;/p&gt;</description>
     </item>
     

@@ -1,131 +1,127 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Brein&#39;s blog</title>
-    <link>https://lostcosta.github.io/tags/</link>
+    <link>https://www.coolgogoing.com/tags/</link>
     <description>Recent content in Tags on Brein&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Brein. All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 22 Sep 2020 22:45:20 +0800</lastBuildDate>
-    
-	<atom:link href="https://lostcosta.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Linux</title>
-      <link>https://lostcosta.github.io/tags/linux/</link>
-      <pubDate>Tue, 22 Sep 2020 22:45:20 +0800</pubDate>
-      
-      <guid>https://lostcosta.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Markdown</title>
-      <link>https://lostcosta.github.io/tags/markdown/</link>
-      <pubDate>Mon, 11 Dec 2017 00:41:30 +0000</pubDate>
-      
-      <guid>https://lostcosta.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MySql</title>
-      <link>https://lostcosta.github.io/tags/mysql/</link>
-      <pubDate>Tue, 22 Sep 2020 22:45:20 +0800</pubDate>
-      
-      <guid>https://lostcosta.github.io/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Sat, 14 Nov 2020 13:02:56 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>bootstrap</title>
-      <link>https://lostcosta.github.io/tags/bootstrap/</link>
+      <link>https://www.coolgogoing.com/tags/bootstrap/</link>
       <pubDate>Sat, 14 Nov 2020 13:02:56 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/bootstrap/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>composer</title>
-      <link>https://lostcosta.github.io/tags/composer/</link>
-      <pubDate>Thu, 01 Oct 2020 22:17:35 +0800</pubDate>
-      
-      <guid>https://lostcosta.github.io/tags/composer/</guid>
+      <guid>https://www.coolgogoing.com/tags/bootstrap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>laravel</title>
-      <link>https://lostcosta.github.io/tags/laravel/</link>
+      <link>https://www.coolgogoing.com/tags/laravel/</link>
       <pubDate>Sat, 14 Nov 2020 13:02:56 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/laravel/</guid>
+      <guid>https://www.coolgogoing.com/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>composer</title>
+      <link>https://www.coolgogoing.com/tags/composer/</link>
+      <pubDate>Thu, 01 Oct 2020 22:17:35 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/tags/composer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>php</title>
-      <link>https://lostcosta.github.io/tags/php/</link>
+      <link>https://www.coolgogoing.com/tags/php/</link>
       <pubDate>Thu, 01 Oct 2020 22:17:35 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/php/</guid>
+      <guid>https://www.coolgogoing.com/tags/php/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>开发工具</title>
-      <link>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
-      <pubDate>Sat, 27 Apr 2019 18:09:53 +0800</pubDate>
+      <title>Linux</title>
+      <link>https://www.coolgogoing.com/tags/linux/</link>
+      <pubDate>Tue, 22 Sep 2020 22:45:20 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</guid>
+      <guid>https://www.coolgogoing.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>开发技巧</title>
-      <link>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</link>
-      <pubDate>Fri, 26 Apr 2019 23:14:58 +0800</pubDate>
+      <title>MySql</title>
+      <link>https://www.coolgogoing.com/tags/mysql/</link>
+      <pubDate>Tue, 22 Sep 2020 22:45:20 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</guid>
+      <guid>https://www.coolgogoing.com/tags/mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>数据库</title>
-      <link>https://lostcosta.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+      <link>https://www.coolgogoing.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
       <pubDate>Tue, 22 Sep 2020 22:45:20 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+      <guid>https://www.coolgogoing.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>歌词</title>
-      <link>https://lostcosta.github.io/tags/%E6%AD%8C%E8%AF%8D/</link>
-      <pubDate>Fri, 07 Sep 2018 00:08:33 +0800</pubDate>
+      <title>开发工具</title>
+      <link>https://www.coolgogoing.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Sat, 27 Apr 2019 18:09:53 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/%E6%AD%8C%E8%AF%8D/</guid>
+      <guid>https://www.coolgogoing.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/</guid>
       <description></description>
     </item>
     
     <item>
       <title>知识点</title>
-      <link>https://lostcosta.github.io/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <link>https://www.coolgogoing.com/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
       <pubDate>Sat, 27 Apr 2019 18:09:53 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <guid>https://www.coolgogoing.com/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>开发技巧</title>
+      <link>https://www.coolgogoing.com/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Fri, 26 Apr 2019 23:14:58 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>歌词</title>
+      <link>https://www.coolgogoing.com/tags/%E6%AD%8C%E8%AF%8D/</link>
+      <pubDate>Fri, 07 Sep 2018 00:08:33 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/tags/%E6%AD%8C%E8%AF%8D/</guid>
       <description></description>
     </item>
     
     <item>
       <title>音乐</title>
-      <link>https://lostcosta.github.io/tags/%E9%9F%B3%E4%B9%90/</link>
+      <link>https://www.coolgogoing.com/tags/%E9%9F%B3%E4%B9%90/</link>
       <pubDate>Fri, 07 Sep 2018 00:08:33 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/tags/%E9%9F%B3%E4%B9%90/</guid>
+      <guid>https://www.coolgogoing.com/tags/%E9%9F%B3%E4%B9%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://www.coolgogoing.com/tags/markdown/</link>
+      <pubDate>Mon, 11 Dec 2017 00:41:30 +0000</pubDate>
+      
+      <guid>https://www.coolgogoing.com/tags/markdown/</guid>
       <description></description>
     </item>
     

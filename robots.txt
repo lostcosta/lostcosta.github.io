@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://lostcosta.github.io/sitemap.xml
+Sitemap: https://www.coolgogoing.com/sitemap.xml

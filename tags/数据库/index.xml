@@ -1,23 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据库 on Brein&#39;s blog</title>
-    <link>https://lostcosta.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <link>https://www.coolgogoing.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
     <description>Recent content in 数据库 on Brein&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Brein. All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 22 Sep 2020 22:45:20 +0800</lastBuildDate>
-    
-	<atom:link href="https://lostcosta.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 22 Sep 2020 22:45:20 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CentOS安装MySql8</title>
-      <link>https://lostcosta.github.io/post/centos%E6%8C%89%E7%85%A7mysql8/</link>
+      <link>https://www.coolgogoing.com/post/centos%E6%8C%89%E7%85%A7mysql8/</link>
       <pubDate>Tue, 22 Sep 2020 22:45:20 +0800</pubDate>
       
-      <guid>https://lostcosta.github.io/post/centos%E6%8C%89%E7%85%A7mysql8/</guid>
+      <guid>https://www.coolgogoing.com/post/centos%E6%8C%89%E7%85%A7mysql8/</guid>
       <description>&lt;p&gt;本文将详细记述在CentOS7.6上安装MySql8.0的详细过程。本文是本人总结各种教程自己摸索出的安装过程，正所谓站在巨人的肩膀上。Linux系统有多重安装软件的方法，我这里只介绍YUM安装。我认为软件就是拿来用的，安装上就好，至于如何安装，就没必要搞那么复杂了，怎么方便怎么来吧&amp;ndash;包管理器走起。&lt;/p&gt;</description>
     </item>
     

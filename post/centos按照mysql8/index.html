@@ -23,10 +23,10 @@
 
 
 
-<meta name="generator" content="Hugo 0.53 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.84.4 with theme even" />
 
 
-<link rel="canonical" href="https://lostcosta.github.io/post/centos%E6%8C%89%E7%85%A7mysql8/" />
+<link rel="canonical" href="https://www.coolgogoing.com/post/centos%E6%8C%89%E7%85%A7mysql8/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -34,28 +34,23 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 
 <meta property="og:title" content="CentOS安装MySql8" />
 <meta property="og:description" content="CentOS安装MySql8详细总结" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lostcosta.github.io/post/centos%E6%8C%89%E7%85%A7mysql8/" /><meta property="article:published_time" content="2020-09-22T22:45:20&#43;08:00"/>
-<meta property="article:modified_time" content="2020-09-22T22:45:20&#43;08:00"/>
+<meta property="og:url" content="https://www.coolgogoing.com/post/centos%E6%8C%89%E7%85%A7mysql8/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2020-09-22T22:45:20+08:00" />
+<meta property="article:modified_time" content="2020-09-22T22:45:20+08:00" />
 
 <meta itemprop="name" content="CentOS安装MySql8">
-<meta itemprop="description" content="CentOS安装MySql8详细总结">
-
-
-<meta itemprop="datePublished" content="2020-09-22T22:45:20&#43;08:00" />
-<meta itemprop="dateModified" content="2020-09-22T22:45:20&#43;08:00" />
-<meta itemprop="wordCount" content="1925">
-
-
-
-<meta itemprop="keywords" content="数据库,MySql,Linux," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="CentOS安装MySql8详细总结"><meta itemprop="datePublished" content="2020-09-22T22:45:20+08:00" />
+<meta itemprop="dateModified" content="2020-09-22T22:45:20+08:00" />
+<meta itemprop="wordCount" content="1927">
+<meta itemprop="keywords" content="数据库,MySql,Linux," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CentOS安装MySql8"/>
 <meta name="twitter:description" content="CentOS安装MySql8详细总结"/>
 
@@ -94,12 +89,21 @@
         <li class="mobile-menu-item">关于</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">Brein&#39;s blog</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -116,6 +120,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -131,7 +136,7 @@
         <div class="post-category">
             <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"> 数据库 </a>
             </div>
-          <span class="more-meta"> 约 1925 字 </span>
+          <span class="more-meta"> 约 1927 字 </span>
           <span class="more-meta"> 预计阅读 4 分钟 </span>
         <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
@@ -141,98 +146,73 @@
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#检查linux系统是否已经安装mariadb">检查Linux系统是否已经安装MariaDB</a></li>
-<li><a href="#检查linux系统是否已经安装mysql">检查Linux系统是否已经安装MySql</a></li>
-<li><a href="#安装mysql">安装MySql</a>
-<ul>
-<li><a href="#下载mysql的repo源并安装">下载mysql的repo源并安装</a></li>
-<li><a href="#检查是否安装成功">检查是否安装成功</a></li>
-<li><a href="#选择想要安装的mysql版本进行安装-会有多个版本的情况">选择想要安装的MySql版本进行安装（会有多个版本的情况）</a></li>
-</ul></li>
-<li><a href="#启动mysql">启动MySQL</a>
-<ul>
-<li><a href="#登陆mysql">登陆MySql</a></li>
-<li><a href="#修改默认密码">修改默认密码</a></li>
-<li><a href="#创建用于mysql的用户">创建用于MySql的用户</a></li>
-<li><a href="#测试远程连接">测试远程连接</a></li>
-<li><a href="#设置开机启动">设置开机启动</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
     <div class="post-content">
       <p>本文将详细记述在CentOS7.6上安装MySql8.0的详细过程。本文是本人总结各种教程自己摸索出的安装过程，正所谓站在巨人的肩膀上。Linux系统有多重安装软件的方法，我这里只介绍YUM安装。我认为软件就是拿来用的，安装上就好，至于如何安装，就没必要搞那么复杂了，怎么方便怎么来吧&ndash;包管理器走起。</p>
-
 <h4 id="检查linux系统是否已经安装mariadb">检查Linux系统是否已经安装MariaDB</h4>
-
 <p>CentOS系统中默认安装的数据库是MariaDB，所以先检查MariaDB：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -qa|grep mariadb</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -qa|grep mariadb</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>如果不存在（上面检查结果返回空）则跳过步骤，如果存在则删除：</p>
+</div><p>如果不存在（上面检查结果返回空）则跳过步骤，如果存在则删除：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -e --nodeps 所有在上一步得到的结果</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -e --nodeps 所有在上一步得到的结果</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="检查linux系统是否已经安装mysql">检查Linux系统是否已经安装MySql</h4>
+</div><h4 id="检查linux系统是否已经安装mysql">检查Linux系统是否已经安装MySql</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -qa|grep mysql</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -qa|grep mysql</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>如果已经安装，则卸载，未安装跳过。删除：</p>
+</div><p>如果已经安装，则卸载，未安装跳过。删除：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -e --nodeps 所有在上一步得到的结果</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -e --nodeps 所有在上一步得到的结果</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h4 id="安装mysql">安装MySql</h4>
-
+</div><h4 id="安装mysql">安装MySql</h4>
 <h5 id="下载mysql的repo源并安装">下载mysql的repo源并安装</h5>
-
 <p>Yum源中默认的数据库安装包是MariaDB，也就是说在CentOS 7及以上的系统中使用yum安装MySQL默认安装的会是MariaDB。如果要安装官方MySql，则需要到官网下载下载mysql的repo源。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span>
-<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -Uvh mysql-community-release-el7-5.noarch.rpm</span></code></pre></td></tr></table>
+<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#rpm -Uvh mysql-community-release-el7-5.noarch.rpm</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<h5 id="检查是否安装成功">检查是否安装成功</h5>
-
+</div><h5 id="检查是否安装成功">检查是否安装成功</h5>
 <p>执行成功后会在<code>/etc/yum.repos.d/</code>目录下生成两个repo文件<code>mysql-community.repo</code>及 <code>mysql-community-source.repo</code>并且通过<code>yum repolist</code>可以看到mysql相关资源</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -241,34 +221,122 @@
 <pre class="chroma"><code class="language-shell" data-lang="shell">repo id                                                         repo name                         
 !mysql-connectors-community/x86_64                              MySQL Connectors Community        
 !mysql-tools-community/x86_64                                   MySQL Tools Community             
-!mysql80-community/x86_64                                       MySQL <span class="m">8</span>.0 Community Server        </code></pre></td></tr></table>
+!mysql80-community/x86_64                                       MySQL 8.0 Community Server        
+</code></pre></td></tr></table>
 </div>
-</div>
-<h5 id="选择想要安装的mysql版本进行安装-会有多个版本的情况">选择想要安装的MySql版本进行安装（会有多个版本的情况）</h5>
+</div><h5 id="选择想要安装的mysql版本进行安装会有多个版本的情况">选择想要安装的MySql版本进行安装（会有多个版本的情况）</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#yum install mysql-community-server</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#yum install mysql-community-server</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p><em>如果同时启用了多个仓库，安装时会选择最新版本，我这里安装的是8.0社区版</em></p>
-
+</div><p><em>如果同时启用了多个仓库，安装时会选择最新版本，我这里安装的是8.0社区版</em></p>
 <p>安装过程耐心等待&hellip;</p>
-
 <blockquote>
 <p>这里要<strong>特别</strong>说明下：安装MySql数据库时，<strong>编码模式一定选择utf8mb4</strong>，为什么？</p>
-
 <p>MySql中的UTF8并不是我们传统意义上的UTF8(最大4字节，数字，字母，符号1字节，中文3字节这样)，而是<strong>最大3字节</strong>，这就导致在存储特定数据是会出现insert失败的情况，比如emoji表情，它需要4个字节去存储，但是如果MySql的字符集设置的utf8，就会出现insert失败的情况。为了解决类似这种问题，官方才在之后引入了utf8mb4的编码。所以utf8mb4才是真正意义上的utf8编码。</p>
 </blockquote>
-
 <h4 id="启动mysql">启动MySQL</h4>
-
 <p>安装完毕我，启动MySql，并查看运行状态：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl start mysqld</span>
+<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl status mysqld</span>
+● mysqld.service - MySQL Server
+   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/mysqld.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
+   Active: active <span class="o">(</span>running<span class="o">)</span> since Tue 2020-09-15 02:37:32 CST<span class="p">;</span> <span class="m">1</span> weeks <span class="m">0</span> days ago
+     Docs: man:mysqld<span class="o">(</span>8<span class="o">)</span>
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+  Process: <span class="m">2605</span> <span class="nv">ExecStartPre</span><span class="o">=</span>/usr/bin/mysqld_pre_systemd <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span>0/SUCCESS<span class="o">)</span>
+ Main PID: <span class="m">2629</span> <span class="o">(</span>mysqld<span class="o">)</span>
+   Status: <span class="s2">&#34;Server is operational&#34;</span>
+   CGroup: /system.slice/mysqld.service
+           └─2629 /usr/sbin/mysqld
+
+</code></pre></td></tr></table>
+</div>
+</div><p>####重置密码</p>
+<p>安装完成后，没有密码，需要重置密码。</p>
+<p>MySql安装完成后，会在<code>/var/log/mysqld.log</code>中生成临时密码，在第一次登陆MySql时可以使用该密码登陆，打开文件搜索<code>temporary password</code>即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1"># vim /var/log/mysqld.log</span>
+...
+2020-09-14T17:05:56.862720Z <span class="m">6</span> <span class="o">[</span>Note<span class="o">]</span> <span class="o">[</span>MY-010454<span class="o">]</span> <span class="o">[</span>Server<span class="o">]</span> A temporary password is generated <span class="k">for</span> root@localhost: XXXXXXX
+
+...
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="登陆mysql">登陆MySql</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -uroot -p
+</code></pre></td></tr></table>
+</div>
+</div><p>输入临时密码，回车，成功进入mysql环境。</p>
+<h5 id="修改默认密码">修改默认密码</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39;;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="创建用于mysql的用户">创建用于MySql的用户</h5>
+<p>在创建用户并赋予权限是会遇到如下问题：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt;grant all privileges on *.* to <span class="s1">&#39;user1&#39;</span>@<span class="s1">&#39;%&#39;</span> identified by <span class="s1">&#39;123456&#39;</span> with grant option<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>ERROR 1410 (42000): You are not allowed to create a user with GRANT</code></p>
+<p>遇到以上问题是，因为MySql8中已经不允许分配权限的同时带密码隐式创建账号了，需要先创建用户，在设置权限。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; CREATE USER <span class="s1">&#39;user1&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span>
+mysql&gt; GRANT ALL PRIVILEGES ON *.* TO<span class="s1">&#39;user1&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>完成后到user表中确认结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -282,101 +350,6 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl start mysqld</span>
-<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl status mysqld</span>
-● mysqld.service - MySQL Server
-   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/mysqld.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
-   Active: active <span class="o">(</span>running<span class="o">)</span> since Tue <span class="m">2020</span>-09-15 <span class="m">02</span>:37:32 CST<span class="p">;</span> <span class="m">1</span> weeks <span class="m">0</span> days ago
-     Docs: man:mysqld<span class="o">(</span><span class="m">8</span><span class="o">)</span>
-           http://dev.mysql.com/doc/refman/en/using-systemd.html
-  Process: <span class="m">2605</span> <span class="nv">ExecStartPre</span><span class="o">=</span>/usr/bin/mysqld_pre_systemd <span class="o">(</span><span class="nv">code</span><span class="o">=</span>exited, <span class="nv">status</span><span class="o">=</span><span class="m">0</span>/SUCCESS<span class="o">)</span>
- Main PID: <span class="m">2629</span> <span class="o">(</span>mysqld<span class="o">)</span>
-   Status: <span class="s2">&#34;Server is operational&#34;</span>
-   CGroup: /system.slice/mysqld.service
-           └─2629 /usr/sbin/mysqld</code></pre></td></tr></table>
-</div>
-</div>
-<p>####重置密码</p>
-
-<p>安装完成后，没有密码，需要重置密码。</p>
-
-<p>MySql安装完成后，会在<code>/var/log/mysqld.log</code>中生成临时密码，在第一次登陆MySql时可以使用该密码登陆，打开文件搜索<code>temporary password</code>即可：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1"># vim /var/log/mysqld.log</span>
-...
-<span class="m">2020</span>-09-14T17:05:56.862720Z <span class="m">6</span> <span class="o">[</span>Note<span class="o">]</span> <span class="o">[</span>MY-010454<span class="o">]</span> <span class="o">[</span>Server<span class="o">]</span> A temporary password is generated <span class="k">for</span> root@localhost: XXXXXXX
-
-...</code></pre></td></tr></table>
-</div>
-</div>
-<h5 id="登陆mysql">登陆MySql</h5>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql -uroot -p</code></pre></td></tr></table>
-</div>
-</div>
-<p>输入临时密码，回车，成功进入mysql环境。</p>
-
-<h5 id="修改默认密码">修改默认密码</h5>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39;;</span></code></pre></td></tr></table>
-</div>
-</div>
-<h5 id="创建用于mysql的用户">创建用于MySql的用户</h5>
-
-<p>在创建用户并赋予权限是会遇到如下问题：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt;grant all privileges on *.* to <span class="s1">&#39;user1&#39;</span>@<span class="s1">&#39;%&#39;</span> identified by <span class="s1">&#39;123456&#39;</span> with grant option<span class="p">;</span></code></pre></td></tr></table>
-</div>
-</div>
-<p><code>ERROR 1410 (42000): You are not allowed to create a user with GRANT</code></p>
-
-<p>遇到以上问题是，因为MySql8中已经不允许分配权限的同时带密码隐式创建账号了，需要先创建用户，在设置权限。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; CREATE USER <span class="s1">&#39;user1&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span>
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO<span class="s1">&#39;user1&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="p">;</span></code></pre></td></tr></table>
-</div>
-</div>
-<p>完成后到user表中确认结果：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; use mysql<span class="p">;</span>
 mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</span>
 +-----------+------------------+
@@ -387,23 +360,20 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
 <span class="p">|</span> localhost <span class="p">|</span> mysql.session    <span class="p">|</span>
 <span class="p">|</span> localhost <span class="p">|</span> mysql.sys        <span class="p">|</span>
 <span class="p">|</span> localhost <span class="p">|</span> root             <span class="p">|</span>
-+-----------+------------------+</code></pre></td></tr></table>
-</div>
-</div>
-<p>此时就创建了一个可以用于远程访问的用户<code>user1</code>,<code>Host</code>中的<code>%</code>是指任何主机</p>
++-----------+------------------+
 
+</code></pre></td></tr></table>
+</div>
+</div><p>此时就创建了一个可以用于远程访问的用户<code>user1</code>,<code>Host</code>中的<code>%</code>是指任何主机</p>
 <h5 id="测试远程连接">测试远程连接</h5>
-
 <p>我用的客户端叫<code>heidisql</code>(<a href="https://www.heidisql.com/">官网</a>)，该有的功能都用，用起来很轻便，感兴趣的同学可以下来试试。</p>
-
 <p>在测试连接时遇到两个错误：</p>
-
 <ul>
-<li>第一错误是连接不上，总是提示无法连接、访问被拒绝。出现该问题的原因大概率是防火墙没有添加mysql默认端口的规则导致的</li>
-</ul>
+<li>
+<p>第一错误是连接不上，总是提示无法连接、访问被拒绝。出现该问题的原因大概率是防火墙没有添加mysql默认端口的规则导致的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -412,30 +382,30 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">  <span class="c1">#查看firewalld状态:systemctl status firewalld</span>
-  <span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl status firewalld</span>
-  <span class="c1">#如果是dead的状态，则开启防火墙</span>
-  <span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl start firewalld</span>
-  <span class="c1">#再次确认firewalld状态,active(running)就表示开启了</span>
-  <span class="c1">#开放默认端口号 3306，出现success表示成功</span>
-  <span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#firewall-cmd --permanent --zone=public --add-port=3306/tcp</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#查看firewalld状态:systemctl status firewalld</span>
+<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl status firewalld</span>
+<span class="c1">#如果是dead的状态，则开启防火墙</span>
+<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl start firewalld</span>
+<span class="c1">#再次确认firewalld状态,active(running)就表示开启了</span>
+<span class="c1">#开放默认端口号 3306，出现success表示成功</span>
+<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#firewall-cmd --permanent --zone=public --add-port=3306/tcp</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<ul>
-<li>配置完成后，再次连接数据库，试试不支持认证协议，此时就要修改加密方式：</li>
-</ul>
+</div></li>
+<li>
+<p>配置完成后，再次连接数据库，试试不支持认证协议，此时就要修改加密方式：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">  mysql&gt;alter user user1 identified with mysql_native_password by <span class="s1">&#39;123456&#39;</span>；</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt;alter user user1 identified with mysql_native_password by <span class="s1">&#39;123456&#39;</span>；
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>确认：</p>
+</div><p>确认：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -447,32 +417,33 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">  mysql&gt; <span class="k">select</span> Host, User, plugin from user<span class="p">;</span>
-  +-----------+------------------+-----------------------+
-  <span class="p">|</span> Host      <span class="p">|</span> User             <span class="p">|</span> plugin                <span class="p">|</span>
-  +-----------+------------------+-----------------------+
-  <span class="p">|</span> %         <span class="p">|</span> user1            <span class="p">|</span> mysql_native_password <span class="p">|</span>
-  <span class="p">|</span> localhost <span class="p">|</span> mysql.infoschema <span class="p">|</span> caching_sha2_password <span class="p">|</span>
-  <span class="p">|</span> localhost <span class="p">|</span> mysql.session    <span class="p">|</span> caching_sha2_password <span class="p">|</span>
-  <span class="p">|</span> localhost <span class="p">|</span> mysql.sys        <span class="p">|</span> caching_sha2_password <span class="p">|</span>
-  <span class="p">|</span> localhost <span class="p">|</span> root             <span class="p">|</span> caching_sha2_password <span class="p">|</span>
-  +-----------+------------------+-----------------------+</code></pre></td></tr></table>
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; <span class="k">select</span> Host, User, plugin from user<span class="p">;</span>
++-----------+------------------+-----------------------+
+<span class="p">|</span> Host      <span class="p">|</span> User             <span class="p">|</span> plugin                <span class="p">|</span>
++-----------+------------------+-----------------------+
+<span class="p">|</span> %         <span class="p">|</span> user1            <span class="p">|</span> mysql_native_password <span class="p">|</span>
+<span class="p">|</span> localhost <span class="p">|</span> mysql.infoschema <span class="p">|</span> caching_sha2_password <span class="p">|</span>
+<span class="p">|</span> localhost <span class="p">|</span> mysql.session    <span class="p">|</span> caching_sha2_password <span class="p">|</span>
+<span class="p">|</span> localhost <span class="p">|</span> mysql.sys        <span class="p">|</span> caching_sha2_password <span class="p">|</span>
+<span class="p">|</span> localhost <span class="p">|</span> root             <span class="p">|</span> caching_sha2_password <span class="p">|</span>
++-----------+------------------+-----------------------+
+</code></pre></td></tr></table>
 </div>
-</div>
-<p><code>user1</code>的<code>plugin</code>为<code>mysql_native_password</code>，设置成功，此时再次使用客户端连接数据，连接成功。</p>
-
+</div><p><code>user1</code>的<code>plugin</code>为<code>mysql_native_password</code>，设置成功，此时再次使用客户端连接数据，连接成功。</p>
+</li>
+</ul>
 <h5 id="设置开机启动">设置开机启动</h5>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="lnt">1
+<pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl enable mysqld</span>
-<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl daemon-reload</span></code></pre></td></tr></table>
+<span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1">#systemctl daemon-reload</span>
+</code></pre></td></tr></table>
 </div>
-</div>
-<p>以上就是本次安装MySql的全部内容</p>
+</div><p>以上就是本次安装MySql的全部内容</p>
     </div>
 
     <div class="post-copyright">
@@ -482,14 +453,18 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2020年9月22日 22时45分20秒</span>
+    <span class="item-content">
+        2020年9月22日 22时45分20秒
+        
+    </span>
   </p>
   
   <p class="copyright-item">
     <span class="item-title">许可协议</span>
     <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
   </p>
-</div><footer class="post-footer">
+</div>
+<footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
           <a href="/tags/mysql/">MySql</a>
@@ -512,14 +487,18 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
         </div>
         
 
+  
+
+  
+
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
-      <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
-  <a href="https://lostcosta.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+  <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.coolgogoing.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
@@ -528,7 +507,7 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    主题 -
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
@@ -538,13 +517,13 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
   </div>
 
   <span class="copyright-year">
-    &copy; 
-    2018 - 
-    2020
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">Brein. All Rights Reserved</span>
+    &copy;
+    2018 -
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span>Brein. All Rights Reserved</span>
+  </span>
+  <span class="power-by">
+    京ICP备2021020827号-1
   </span>
 </div>
     </footer>
@@ -556,7 +535,10 @@ mysql&gt; <span class="k">select</span> Host, User from user<span class="p">;</s
   <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
   <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
 
 
 
