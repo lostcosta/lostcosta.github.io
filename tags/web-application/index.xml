@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web application on Brein&#39;s blog</title>
+    <link>https://www.coolgogoing.com/tags/web-application/</link>
+    <description>Recent content in web application on Brein&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Brein. All Rights Reserved</copyright>
+    <lastBuildDate>Fri, 09 Jul 2021 01:08:44 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/tags/web-application/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ASP.NET Core 简介</title>
+      <link>https://www.coolgogoing.com/post/dotnetcore_01/</link>
+      <pubDate>Fri, 09 Jul 2021 01:08:44 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/dotnetcore_01/</guid>
+      <description>&lt;p&gt;随着微软逐渐拥抱开源，旗下.NET 家族也转向跨平台。虽然国内使用.NET 技术栈的项目比较少，但我相信随着对 &lt;code&gt;.NET Core&lt;/code&gt; 的逐步了解，在国内其也将拥有一片天地。我也希望为 &lt;code&gt;.NET Core&lt;/code&gt; 在国内的普及贡献自己的一份力量。本次带来 &lt;code&gt;ASP.NET Core&lt;/code&gt; 入门教程。下面是第一章，对 &lt;code&gt;ASP.NET Core&lt;/code&gt; 做一个总体的介绍。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

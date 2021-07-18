@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>.Net中的特性(Attribute) - Brein&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Brein" /><meta name="description" content="特性(Attribute)详细说明" /><meta name="keywords" content="ASP.NET Core, Attribute, C#" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.84.4 with theme even" />
+
+
+<link rel="canonical" href="https://www.coolgogoing.com/post/dotnetcore_03/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content=".Net中的特性(Attribute)" />
+<meta property="og:description" content="特性(Attribute)详细说明" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.coolgogoing.com/post/dotnetcore_03/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-10T21:58:57+08:00" />
+<meta property="article:modified_time" content="2021-07-10T21:58:57+08:00" />
+
+<meta itemprop="name" content=".Net中的特性(Attribute)">
+<meta itemprop="description" content="特性(Attribute)详细说明"><meta itemprop="datePublished" content="2021-07-10T21:58:57+08:00" />
+<meta itemprop="dateModified" content="2021-07-10T21:58:57+08:00" />
+<meta itemprop="wordCount" content="3962">
+<meta itemprop="keywords" content="ASP.NET Core,Attribute,C#," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=".Net中的特性(Attribute)"/>
+<meta name="twitter:description" content="特性(Attribute)详细说明"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Brein&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Brein&#39;s blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">.Net中的特性(Attribute)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021年7月10日 21时58分57秒 </span>
+        <div class="post-category">
+            <a href="/categories/.net%E5%BC%80%E5%8F%91/"> .Net开发 </a>
+            </div>
+          <span class="more-meta"> 约 3962 字 </span>
+          <span class="more-meta"> 预计阅读 8 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#特性attribute概述">特性(Attribute)概述</a>
+      <ul>
+        <li><a href="#概念">概念</a></li>
+        <li><a href="#实现">实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#特性的使用">特性的使用</a>
+      <ul>
+        <li><a href="#取得特性">取得特性</a></li>
+        <li><a href="#特性应用">特性应用</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>本文作为<code>ASP.NET Core</code>的预备知识，详细讲解下<code>.NET</code>中的<strong>特性</strong>。<strong>特性</strong>在<code>ASP.NET Core</code>开发中是使用最频繁的技术之一，同时也是<code>AOP</code>编程的技术基础。因此很又必要对<strong>特性</strong>进行一个详细的说明，为将来的开发打下基础。</p>
+<h2 id="特性attribute概述">特性(Attribute)概述</h2>
+<h3 id="概念">概念</h3>
+<p><code>C#</code>语言中，特性是<strong>元数据</strong>，附加于字段或代码块，如程序集(<code>assemblies</code>)、成员变量、数据类型。<strong>编译器</strong>与<strong>反射式编程</strong>可访问特性。开发者可以决定把特性作为元数据，专门用于表示与给定应用程序，类和成员有关的，与实例无关的各类信息。开发者也可以决定把一些特性暴露为属性（properties），用作更大的应用程序框架的一部分。特性可以实现为类（派生自<code>System.Attribute</code>）。特性是对现有代码的一种扩展，本身并不会影响既有的逻辑，除非主动去获取，使用特性里实现的功能。</p>
+<h3 id="实现">实现</h3>
+<p>下面具体介绍特性的实现。单纯的码字都是很苍白的，直接上代码！</p>
+<p>首先是声明一个自定义的特性：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">namespace</span> <span class="nn">AttributeDemo.CustomAttributes</span>
+<span class="p">{</span>
+  <span class="c1">//这里声明自定义特性的使用范围，是否可以继承，是否可以重复使用在同一个对象上
+</span><span class="c1"></span><span class="na">  [System.AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]</span>
+  <span class="c1">//特性必须继承Attribute类
+</span><span class="c1"></span>  <span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">CustomAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
+  <span class="p">{</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>AttributeTargets</code>定义了什么地方可以使用特性，此处<code>all</code>声明<code>AttributeTargets</code>中规定的位置都可以使用这个自定义的特性。</p>
+<p>接下来使用该特性，我将展示特性可以被使用位置。比如我们在一个<code>student</code>类上使用该特性：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-C#" data-lang="C#"><span class="k">namespace</span> <span class="nn">AttributeDemo</span>
+<span class="p">{</span>
+  <span class="c1">//可以对类整体使用
+</span><span class="c1"></span>  <span class="c1">//Attribute可以省略，因此可以写为[Custom]
+</span><span class="c1"></span><span class="na">  [CustomAttribute]</span>
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">Student</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">EMail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//可以对属性字段使用
+</span><span class="c1"></span><span class="na">    [CustomAttribute]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">PhoneNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//可以对方法使用
+</span><span class="c1"></span><span class="na">    [CustomAttribute]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="n">Study</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;{Name}正在学习中。。。&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">//可以对返回值使用
+</span><span class="c1"></span><span class="na">    [return: CustomAttribute]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">SayHi</span><span class="p">([</span><span class="n">CustomAttribute</span><span class="p">]</span> <span class="kt">string</span> <span class="n">name</span><span class="p">)</span><span class="c1">//可以对参数列表使用
+</span><span class="c1"></span>    <span class="p">{</span>
+      <span class="k">return</span> <span class="s">$&#34;Hello {name}&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>那么在这些地方标识我们自定义的特性会发生什么呢？下面我用<a href="https://ilspy.net/">ILSpy</a>反编译下生成的程序，看看我们追加的特性到底做了什么。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="p">.</span><span class="k">class</span> <span class="nc">public</span> <span class="n">auto</span> <span class="n">ansi</span> <span class="n">beforefieldinit</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">Student</span>
+<span class="n">extends</span> <span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Runtime</span><span class="p">]</span><span class="n">System</span><span class="p">.</span><span class="n">Object</span>
+<span class="p">{</span>
+<span class="c1">//特性的构造函数
+</span><span class="c1"></span><span class="p">.</span><span class="n">custom</span> <span class="n">instance</span> <span class="k">void</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">CustomAttributes</span><span class="p">.</span><span class="n">CustomAttribute</span><span class="p">::.</span><span class="n">ctor</span><span class="p">()</span> <span class="p">=</span> <span class="p">(</span>
+  <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+<span class="p">)</span>
+<span class="c1">// Fields
+</span><span class="c1">// 省略
+</span><span class="c1"></span>
+<span class="c1">// Methods
+</span><span class="c1">// 省略：get/set methods
+</span><span class="c1"></span>
+<span class="p">.</span><span class="n">method</span> <span class="k">public</span> <span class="n">hidebysig</span>
+  <span class="n">instance</span> <span class="k">void</span> <span class="n">Study</span> <span class="p">()</span> <span class="n">cil</span> <span class="n">managed</span>
+<span class="p">{</span>
+  <span class="c1">//特性的构造函数
+</span><span class="c1"></span>  <span class="p">.</span><span class="n">custom</span> <span class="n">instance</span> <span class="k">void</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">CustomAttributes</span><span class="p">.</span><span class="n">CustomAttribute</span><span class="p">::.</span><span class="n">ctor</span><span class="p">()</span> <span class="p">=</span> <span class="p">(</span>
+    <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+  <span class="p">)</span>
+  <span class="c1">// Method begins at RVA 0x20f6
+</span><span class="c1"></span>  <span class="c1">// Code size 24 (0x18)
+</span><span class="c1"></span>  <span class="p">.</span><span class="n">maxstack</span> <span class="m">8</span>
+
+  <span class="c1">// {
+</span><span class="c1"></span>  <span class="n">IL_0000</span><span class="p">:</span> <span class="n">nop</span>
+  <span class="c1">// Console.WriteLine(Name + &#34;正在学习中。。。&#34;);
+</span><span class="c1"></span>  <span class="n">IL_0001</span><span class="p">:</span> <span class="n">ldarg</span><span class="p">.</span><span class="m">0</span>
+  <span class="n">IL_0002</span><span class="p">:</span> <span class="n">call</span> <span class="n">instance</span> <span class="kt">string</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">Student</span><span class="p">::</span><span class="n">get_Name</span><span class="p">()</span>
+  <span class="n">IL_0007</span><span class="p">:</span> <span class="n">ldstr</span> <span class="s">&#34;正在学习中。。。&#34;</span>
+  <span class="n">IL_000c</span><span class="p">:</span> <span class="n">call</span> <span class="kt">string</span> <span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Runtime</span><span class="p">]</span><span class="n">System</span><span class="p">.</span><span class="n">String</span><span class="p">::</span><span class="n">Concat</span><span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span>
+  <span class="n">IL_0011</span><span class="p">:</span> <span class="n">call</span> <span class="k">void</span> <span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">]</span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">::</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+  <span class="c1">// }
+</span><span class="c1"></span>  <span class="n">IL_0016</span><span class="p">:</span> <span class="n">nop</span>
+  <span class="n">IL_0017</span><span class="p">:</span> <span class="n">ret</span>
+<span class="p">}</span> <span class="c1">// end of method Student::Study
+</span><span class="c1"></span>
+<span class="p">.</span><span class="n">method</span> <span class="k">public</span> <span class="n">hidebysig</span>
+  <span class="n">instance</span> <span class="kt">string</span> <span class="n">SayHi</span> <span class="p">(</span>
+    <span class="kt">string</span> <span class="n">name</span>
+  <span class="p">)</span> <span class="n">cil</span> <span class="n">managed</span>
+<span class="p">{</span>
+  <span class="c1">//两个特性构造函数，分别对应返回值，参数列表声明的特性标记
+</span><span class="c1"></span>  <span class="p">.</span><span class="n">param</span> <span class="p">[</span><span class="m">0</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">custom</span> <span class="n">instance</span> <span class="k">void</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">CustomAttributes</span><span class="p">.</span><span class="n">CustomAttribute</span><span class="p">::.</span><span class="n">ctor</span><span class="p">()</span> <span class="p">=</span> <span class="p">(</span>
+      <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+    <span class="p">)</span>
+  <span class="p">.</span><span class="n">param</span> <span class="p">[</span><span class="m">1</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">custom</span> <span class="n">instance</span> <span class="k">void</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">CustomAttributes</span><span class="p">.</span><span class="n">CustomAttribute</span><span class="p">::.</span><span class="n">ctor</span><span class="p">()</span> <span class="p">=</span> <span class="p">(</span>
+      <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+    <span class="p">)</span>
+  <span class="c1">// Method begins at RVA 0x2110
+</span><span class="c1"></span>  <span class="c1">// Code size 17 (0x11)
+</span><span class="c1"></span>  <span class="p">.</span><span class="n">maxstack</span> <span class="m">2</span>
+  <span class="p">.</span><span class="n">locals</span> <span class="n">init</span> <span class="p">(</span>
+<span class="na">    [0]</span> <span class="kt">string</span>
+  <span class="p">)</span>
+
+  <span class="c1">// {
+</span><span class="c1"></span>  <span class="n">IL_0000</span><span class="p">:</span> <span class="n">nop</span>
+  <span class="c1">// return &#34;Hello &#34; + name;
+</span><span class="c1"></span>  <span class="n">IL_0001</span><span class="p">:</span> <span class="n">ldstr</span> <span class="s">&#34;Hello &#34;</span>
+  <span class="n">IL_0006</span><span class="p">:</span> <span class="n">ldarg</span><span class="p">.</span><span class="m">1</span>
+  <span class="n">IL_0007</span><span class="p">:</span> <span class="n">call</span> <span class="kt">string</span> <span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Runtime</span><span class="p">]</span><span class="n">System</span><span class="p">.</span><span class="n">String</span><span class="p">::</span><span class="n">Concat</span><span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span>
+  <span class="n">IL_000c</span><span class="p">:</span> <span class="n">stloc</span><span class="p">.</span><span class="m">0</span>
+  <span class="c1">// (no C# code)
+</span><span class="c1"></span>  <span class="n">IL_000d</span><span class="p">:</span> <span class="n">br</span><span class="p">.</span><span class="n">s</span> <span class="n">IL_000f</span>
+
+  <span class="n">IL_000f</span><span class="p">:</span> <span class="n">ldloc</span><span class="p">.</span><span class="m">0</span>
+  <span class="n">IL_0010</span><span class="p">:</span> <span class="n">ret</span>
+<span class="p">}</span> <span class="c1">// end of method Student::SayHi
+</span><span class="c1"></span>
+<span class="p">.</span><span class="n">method</span> <span class="k">public</span> <span class="n">hidebysig</span> <span class="n">specialname</span> <span class="n">rtspecialname</span>
+  <span class="n">instance</span> <span class="k">void</span> <span class="p">.</span><span class="n">ctor</span> <span class="p">()</span> <span class="n">cil</span> <span class="n">managed</span>
+<span class="p">{</span>
+  <span class="c1">// Method begins at RVA 0x212d
+</span><span class="c1"></span>  <span class="c1">// Code size 8 (0x8)
+</span><span class="c1"></span>  <span class="p">.</span><span class="n">maxstack</span> <span class="m">8</span>
+
+  <span class="c1">// {
+</span><span class="c1"></span>  <span class="n">IL_0000</span><span class="p">:</span> <span class="n">ldarg</span><span class="p">.</span><span class="m">0</span>
+  <span class="c1">// (no C# code)
+</span><span class="c1"></span>  <span class="n">IL_0001</span><span class="p">:</span> <span class="n">call</span> <span class="n">instance</span> <span class="k">void</span> <span class="p">[</span><span class="n">System</span><span class="p">.</span><span class="n">Runtime</span><span class="p">]</span><span class="n">System</span><span class="p">.</span><span class="n">Object</span><span class="p">::.</span><span class="n">ctor</span><span class="p">()</span>
+  <span class="c1">// }
+</span><span class="c1"></span>  <span class="n">IL_0006</span><span class="p">:</span> <span class="n">nop</span>
+  <span class="n">IL_0007</span><span class="p">:</span> <span class="n">ret</span>
+<span class="p">}</span> <span class="c1">// end of method Student::.ctor
+</span><span class="c1"></span>
+<span class="c1">// Properties
+</span><span class="c1">// 省略：属性声明
+</span><span class="c1"></span><span class="p">.</span><span class="n">property</span> <span class="n">instance</span> <span class="kt">string</span> <span class="n">PhoneNumber</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//特性构造函数
+</span><span class="c1"></span>  <span class="p">.</span><span class="n">custom</span> <span class="n">instance</span> <span class="k">void</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">CustomAttributes</span><span class="p">.</span><span class="n">CustomAttribute</span><span class="p">::.</span><span class="n">ctor</span><span class="p">()</span> <span class="p">=</span> <span class="p">(</span>
+    <span class="m">01</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>
+  <span class="p">)</span>
+  <span class="p">.</span><span class="k">get</span> <span class="n">instance</span> <span class="kt">string</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">Student</span><span class="p">::</span><span class="n">get_PhoneNumber</span><span class="p">()</span>
+  <span class="p">.</span><span class="k">set</span> <span class="n">instance</span> <span class="k">void</span> <span class="n">AttributeDemo</span><span class="p">.</span><span class="n">Student</span><span class="p">::</span><span class="n">set_PhoneNumber</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">}</span> <span class="c1">// end of class AttributeDemo.Student
+</span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以看到，在程序编译后，根据我们声明的特性标记，编译器自动为我们在对应位置注入了特性相关的代码。这就给了我们进一步的操作空间，我们可以利用特性追加功能，添加更丰富的信息。那么，我们是如何利用特性的呢？下一节我们介绍下特性的使用方式。这里始终记得一点：特性不会影响既有代码，它是不会自动执行的，要使用特性，必须手动调用特性相关方法。</p>
+<h2 id="特性的使用">特性的使用</h2>
+<h3 id="取得特性">取得特性</h3>
+<p>要使用特性，首先我们要能够访问到它。特性和普通的类是不一样的，传统的方式是无法访问到的。开篇我们提到，特性是<strong>元数据</strong>。编译器可以访问元数据，因此部分自带的特性都是在编译时生效的，它们告诉编译器应该怎么处理它们标记的对象。比如，<code>Obsolete</code>，<code>Serialize</code>等等。另一个可以取得元数据的方式就是通过<strong>反射</strong>技术了。下面的代码，展示了如何取得上面声明的特性：</p>
+<p>首先给特性类增加些内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">namespace</span> <span class="nn">AttributeDemo.CustomAttributes</span>
+<span class="p">{</span>
+  <span class="c1">//这里声明自定义特性的使用范围，是否可以继承，是否可以重复使用在同一个对象上
+</span><span class="c1"></span><span class="na">  [System.AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]</span>
+  <span class="c1">//特性必须继承Attribute类
+</span><span class="c1"></span>  <span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">CustomAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="n">CustomAttribute</span><span class="p">()</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+    <span class="k">public</span> <span class="n">CustomAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">description</span><span class="p">,</span> <span class="kt">string</span> <span class="n">remark</span> <span class="p">=</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
+        <span class="n">Remark</span> <span class="p">=</span> <span class="n">remark</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Remark</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="n">Show</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;This is {nameof(CustomAttribute)}&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>然后修改<code>Student</code>类</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">namespace</span> <span class="nn">AttributeDemo</span>
+<span class="p">{</span>
+  <span class="c1">//可以对类整体使用
+</span><span class="c1"></span><span class="na">  [CustomAttribute(description:&#34;类特性示例&#34;,remark: &#34;类特性&#34;)]</span>
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">Student</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">EMail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//可以对属性字段使用
+</span><span class="c1"></span><span class="na">    [CustomAttribute(description: &#34;属性示例&#34;, remark: &#34;属性特性&#34;)]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">PhoneNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//可以对方法使用
+</span><span class="c1"></span><span class="na">    [CustomAttribute(description: &#34;方法示例&#34;, remark: &#34;方法特性&#34;)]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="n">Study</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;{Name}正在学习中。。。&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">//可以对返回值使用
+</span><span class="c1"></span><span class="na">    [return: CustomAttribute(description: &#34;返回值示例&#34;, remark: &#34;返回值特性&#34;)]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">SayHi</span><span class="p">([</span><span class="n">CustomAttribute</span><span class="p">(</span><span class="n">description</span><span class="p">:</span> <span class="s">&#34;参数示例&#34;</span><span class="p">,</span> <span class="n">remark</span><span class="p">:</span> <span class="s">&#34;参数特性&#34;</span><span class="p">)]</span> <span class="kt">string</span> <span class="n">name</span><span class="p">)</span><span class="c1">//可以对参数列表使用
+</span><span class="c1"></span>    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">$&#34;Hello {name}&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>追加一个访问数据的方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="n">GetAttribue</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">//取得类的特性
+</span><span class="c1"></span>  <span class="n">Type</span> <span class="n">classType</span> <span class="p">=</span> <span class="k">typeof</span><span class="p">(</span><span class="n">Student</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">classType</span><span class="p">.</span><span class="n">IsDefined</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CustomAttribute</span><span class="p">),</span><span class="k">true</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="kt">object</span><span class="p">[]</span> <span class="n">classAttributes</span> <span class="p">=</span> <span class="n">classType</span><span class="p">.</span><span class="n">GetCustomAttributes</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CustomAttribute</span><span class="p">),</span> <span class="k">true</span><span class="p">);</span>
+    <span class="n">CustomAttribute</span> <span class="n">classAttribute</span> <span class="p">=</span> <span class="p">(</span><span class="n">CustomAttribute</span><span class="p">)</span><span class="n">classAttributes</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;class description: {classAttribute.Description} | class remark: {classAttribute.Remark}&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">//取得方法的特性
+</span><span class="c1"></span>  <span class="n">MethodInfo</span> <span class="n">methodInfo</span> <span class="p">=</span> <span class="n">classType</span><span class="p">.</span><span class="n">GetMethod</span><span class="p">(</span><span class="s">&#34;Study&#34;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">methodInfo</span><span class="p">.</span><span class="n">IsDefined</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CustomAttribute</span><span class="p">),</span> <span class="k">true</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">CustomAttribute</span> <span class="n">methodeAttribute</span> <span class="p">=</span> <span class="n">methodInfo</span><span class="p">.</span><span class="n">GetCustomAttribute</span><span class="p">&lt;</span><span class="n">CustomAttribute</span><span class="p">&gt;();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;method description: {methodeAttribute.Description} | method remark: {methodeAttribute.Remark}&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">//取得属性的特性
+</span><span class="c1"></span>  <span class="n">PropertyInfo</span> <span class="n">propertyInfo</span> <span class="p">=</span> <span class="n">classType</span><span class="p">.</span><span class="n">GetProperty</span><span class="p">(</span><span class="s">&#34;PhoneNumber&#34;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">propertyInfo</span><span class="p">.</span><span class="n">IsDefined</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CustomAttribute</span><span class="p">),</span> <span class="k">true</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">CustomAttribute</span> <span class="n">propertyAttribute</span> <span class="p">=</span> <span class="n">propertyInfo</span><span class="p">.</span><span class="n">GetCustomAttribute</span><span class="p">&lt;</span><span class="n">CustomAttribute</span><span class="p">&gt;();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;property description: {propertyAttribute.Description} | property remark: {propertyAttribute.Remark}&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">//取得参数的特性
+</span><span class="c1"></span>  <span class="n">MethodInfo</span> <span class="n">methodInfo1</span> <span class="p">=</span> <span class="n">classType</span><span class="p">.</span><span class="n">GetMethod</span><span class="p">(</span><span class="s">&#34;SayHi&#34;</span><span class="p">);</span>
+  <span class="n">ParameterInfo</span> <span class="n">paramInfo</span> <span class="p">=</span> <span class="n">methodInfo1</span><span class="p">.</span><span class="n">GetParameters</span><span class="p">()[</span><span class="m">0</span><span class="p">];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">paramInfo</span><span class="p">.</span><span class="n">IsDefined</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CustomAttribute</span><span class="p">),</span> <span class="k">true</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">CustomAttribute</span> <span class="n">ParameterAttribute</span> <span class="p">=</span> <span class="n">paramInfo</span><span class="p">.</span><span class="n">GetCustomAttribute</span><span class="p">&lt;</span><span class="n">CustomAttribute</span><span class="p">&gt;();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;parameter description: {ParameterAttribute.Description} | parameter remark: {ParameterAttribute.Remark}&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">//取得返回值的特性
+</span><span class="c1"></span>  <span class="n">ParameterInfo</span> <span class="n">paramInfo1</span> <span class="p">=</span> <span class="n">methodInfo1</span><span class="p">.</span><span class="n">ReturnParameter</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">paramInfo1</span><span class="p">.</span><span class="n">IsDefined</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CustomAttribute</span><span class="p">),</span> <span class="k">true</span><span class="p">))</span>
+  <span class="p">{</span>
+    <span class="n">CustomAttribute</span> <span class="n">returnAttribute</span> <span class="p">=</span> <span class="n">paramInfo1</span><span class="p">.</span><span class="n">GetCustomAttribute</span><span class="p">&lt;</span><span class="n">CustomAttribute</span><span class="p">&gt;();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;returnValue description: {returnAttribute.Description} | returnValue remark: {returnAttribute.Remark}&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cmd" data-lang="cmd">class description: 类特性示例 <span class="p">|</span> class remark: 类特性
+method description: 方法示例 <span class="p">|</span> method remark: 方法特性
+property description: 属性示例 <span class="p">|</span> property remark: 属性特性
+parameter description: 参数示例 <span class="p">|</span> parameter remark: 参数特性
+returnValue description: 返回值示例 <span class="p">|</span> returnValue remark: 返回值特性
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="特性应用">特性应用</h3>
+<h4 id="取得枚举类型的注释">取得枚举类型的注释</h4>
+<p>平时开发时，经常会用到枚举类型及其相关判断，而有时我们想显示枚举类型的注释，怎么办？下面用特性来解决这个问题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">namespace</span> <span class="nn">AttributeDemo.CustomAttributes</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">RemarkAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">remark</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="n">RemarkAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">remark</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">remark</span> <span class="p">=</span> <span class="n">remark</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">GetRemark</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">remark</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">namespace</span> <span class="nn">AttributeDemo.Extensions</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">enum</span> <span class="n">UserState</span>
+  <span class="p">{</span>
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 正常
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="na">    [RemarkAttribute(&#34;正常&#34;)]</span>
+    <span class="n">Normal</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 冻结
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="na">    [RemarkAttribute(&#34;冻结&#34;)]</span>
+    <span class="n">Frozen</span><span class="p">,</span>
+    <span class="c1">/// &lt;summary&gt;
+</span><span class="c1"></span>    <span class="c1">/// 删除
+</span><span class="c1"></span>    <span class="c1">/// &lt;/summary&gt;
+</span><span class="c1"></span><span class="na">    [RemarkAttribute(&#34;删除&#34;)]</span>
+    <span class="n">Deleted</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">RemarkExtension</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">GetRemark</span><span class="p">(</span><span class="k">this</span> <span class="n">Enum</span> <span class="k">value</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">Type</span> <span class="n">type</span> <span class="p">=</span> <span class="k">value</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
+      <span class="n">FieldInfo</span> <span class="n">field</span> <span class="p">=</span> <span class="n">type</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="k">value</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="n">IsDefined</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">RemarkAttribute</span><span class="p">),</span> <span class="k">true</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">RemarkAttribute</span> <span class="n">attr</span> <span class="p">=</span> <span class="n">field</span><span class="p">.</span><span class="n">GetCustomAttribute</span><span class="p">&lt;</span><span class="n">RemarkAttribute</span><span class="p">&gt;();</span>
+        <span class="k">return</span> <span class="n">attr</span><span class="p">.</span><span class="n">GetRemark</span><span class="p">();</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="k">value</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">UserState</span> <span class="n">userState</span> <span class="p">=</span> <span class="n">UserState</span><span class="p">.</span><span class="n">Normal</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">userState</span><span class="p">.</span><span class="n">GetRemark</span><span class="p">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="数据有效性检查">数据有效性检查</h4>
+<p>一般对于用户提交的数据，我们都需要进行数据有效性的检查，之后才能提交到数据库。本次我们使用特性，优雅的解决这个问题。</p>
+<p>声明检查数据长度的特性（因为想把数据校验作为一个共通处理，因此需要首先声明一个抽象类）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">namespace</span> <span class="nn">AttributeDemo.CustomAttributes</span>
+<span class="p">{</span>
+
+  <span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">CustomValidateAttribute</span> <span class="p">:</span> <span class="n">Attribute</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="k">abstract</span> <span class="kt">bool</span> <span class="n">Validate</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">LengthValidateAttribute</span> <span class="p">:</span> <span class="n">CustomValidateAttribute</span>
+  <span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">minLen</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="kt">int</span> <span class="n">maxLen</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">LengthValidateAttribute</span><span class="p">(</span><span class="kt">int</span> <span class="n">minLen</span><span class="p">,</span> <span class="kt">int</span> <span class="n">maxLen</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="n">minLen</span> <span class="p">=</span> <span class="n">minLen</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="n">maxLen</span> <span class="p">=</span> <span class="n">maxLen</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="kt">bool</span> <span class="n">Validate</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="k">value</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="k">value</span><span class="p">.</span><span class="n">ToString</span><span class="p">()))</span>
+      <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">len</span> <span class="p">=</span> <span class="k">value</span><span class="p">.</span><span class="n">ToString</span><span class="p">().</span><span class="n">Length</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="p">&gt;=</span> <span class="n">minLen</span> <span class="p">&amp;&amp;</span> <span class="n">len</span> <span class="p">&lt;=</span> <span class="n">maxLen</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>把特性附加到类中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">namespace</span> <span class="nn">AttributeDemo</span>
+<span class="p">{</span>
+  <span class="c1">//可以对类整体使用
+</span><span class="c1"></span><span class="na">  [CustomAttribute(description:&#34;类特性示例&#34;,remark: &#34;类特性&#34;)]</span>
+  <span class="k">public</span> <span class="k">class</span> <span class="nc">Student</span>
+  <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="na">    [LengthValidateAttribute(16, 100)]</span><span class="c1">//追加对邮箱的长度检查
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">EMail</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//可以对属性字段使用
+</span><span class="c1"></span><span class="na">    [CustomAttribute(description: &#34;属性示例&#34;, remark: &#34;属性特性&#34;)]</span>
+<span class="na">    [LengthValidateAttribute(6, 9)]</span><span class="c1">//追加对电话号码的长度检查
+</span><span class="c1"></span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">PhoneNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="c1">//可以对方法使用
+</span><span class="c1"></span><span class="na">    [CustomAttribute(description: &#34;方法示例&#34;, remark: &#34;方法特性&#34;)]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="n">Study</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;{Name}正在学习中。。。&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">//可以对返回值使用
+</span><span class="c1"></span><span class="na">    [return: CustomAttribute(description: &#34;返回值示例&#34;, remark: &#34;返回值特性&#34;)]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">SayHi</span><span class="p">([</span><span class="n">CustomAttribute</span><span class="p">(</span><span class="n">description</span><span class="p">:</span> <span class="s">&#34;参数示例&#34;</span><span class="p">,</span> <span class="n">remark</span><span class="p">:</span> <span class="s">&#34;参数特性&#34;</span><span class="p">)]</span> <span class="kt">string</span> <span class="n">name</span><span class="p">)</span><span class="c1">//可以对参数列表使用
+</span><span class="c1"></span>    <span class="p">{</span>
+      <span class="k">return</span> <span class="s">$&#34;Hello {name}&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>再对<code>Student</code>类添加一个扩展方法（如果想对更广泛范围的对象进行数据校验，可以对它们的基类追加扩展方法）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">ValidateExtension</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">Validate</span><span class="p">(</span><span class="k">this</span> <span class="n">Student</span> <span class="k">value</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">errCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="n">Type</span> <span class="n">type</span> <span class="p">=</span> <span class="k">value</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
+    <span class="n">PropertyInfo</span><span class="p">[]</span> <span class="n">properties</span> <span class="p">=</span> <span class="n">type</span><span class="p">.</span><span class="n">GetProperties</span><span class="p">();</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="n">PropertyInfo</span> <span class="n">property</span> <span class="k">in</span> <span class="n">properties</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="n">IsDefined</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">CustomValidateAttribute</span><span class="p">),</span> <span class="k">true</span><span class="p">))</span>
+      <span class="p">{</span>
+        <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">CustomValidateAttribute</span><span class="p">&gt;</span> <span class="n">attris</span> <span class="p">=</span> <span class="n">property</span><span class="p">.</span><span class="n">GetCustomAttributes</span><span class="p">&lt;</span><span class="n">CustomValidateAttribute</span><span class="p">&gt;();</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="n">CustomValidateAttribute</span> <span class="n">attr</span> <span class="k">in</span> <span class="n">attris</span><span class="p">)</span>
+        <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(!</span><span class="n">attr</span><span class="p">.</span><span class="n">Validate</span><span class="p">(</span><span class="n">property</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="k">value</span><span class="p">)))</span>
+          <span class="p">{</span>
+            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$&#34;数据校验失败：字段[{property.Name}]&#34;</span><span class="p">);</span>
+            <span class="n">errCount</span><span class="p">++;</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">errCount</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="k">true</span> <span class="p">:</span> <span class="k">false</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>调用数据校验：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="n">Student</span> <span class="n">stu</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Student</span>
+<span class="p">{</span>
+  <span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span>
+  <span class="n">EMail</span> <span class="p">=</span> <span class="s">&#34;xxxxx@xxxx.com&#34;</span><span class="p">,</span>
+  <span class="n">Name</span> <span class="p">=</span> <span class="s">&#34;brein&#34;</span><span class="p">,</span>
+  <span class="n">PhoneNumber</span> <span class="p">=</span> <span class="s">&#34;1234567890&#34;</span>
+<span class="p">};</span>
+<span class="n">stu</span><span class="p">.</span><span class="n">Validate</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>输出校验结果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cmd" data-lang="cmd">数据校验失败：字段[PhoneNumber]
+数据校验失败：字段[EMail]
+</code></pre></td></tr></table>
+</div>
+</div><p>以上，是两个平时用的比较多的关于特性的应用场景。在<code>ASP.NET Core</code>中，特性还有更多应用场景，例如：<code>Filter</code>，<code>Validate</code>， <code>MVC</code>/<code>API</code>相关特性， <code>AOP</code>应用等等。可以说特性无处不在且非常重要。充分掌握特性相关知识，是掌握<code>ASP.NET Core</code>的充分必要条件。</p>
+<p>（全文完）</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Brein</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021年7月10日 21时58分57秒
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/asp.net-core/">ASP.NET Core</a>
+          <a href="/tags/attribute/">Attribute</a>
+          <a href="/tags/c/">C#</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/redis_01/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Redis基础</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/dotnetcore_2/">
+            <span class="next-text nav-default">控制反转（IoC）与依赖注入（DI）</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.coolgogoing.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    
+    
+  </div>
+
+  <span class="copyright-year">
+    &copy;
+    2018 -
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span>Brein. All Rights Reserved</span>
+  </span>
+  <span class="power-by">
+    京ICP备2021020827号-1
+  </span>
+  <span class="power-by">
+    <div style="width:300px;margin:0 auto;">
+      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011502004807"
+        style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/images/beian.png"
+          style="float:left;" />
+        <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11011502004807号
+        </p>
+      </a>
+    </div>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

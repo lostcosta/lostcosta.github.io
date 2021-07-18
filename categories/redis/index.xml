@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on Brein&#39;s blog</title>
+    <link>https://www.coolgogoing.com/categories/redis/</link>
+    <description>Recent content in Redis on Brein&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Brein. All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 17 Jul 2021 09:32:01 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/categories/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis基础</title>
+      <link>https://www.coolgogoing.com/post/redis_01/</link>
+      <pubDate>Sat, 17 Jul 2021 09:32:01 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/redis_01/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Redis&lt;/code&gt;(&lt;code&gt;Re&lt;/code&gt;mote &lt;code&gt;Di&lt;/code&gt;ctionary &lt;code&gt;S&lt;/code&gt;erver)是一个使用&lt;code&gt;ANSI C&lt;/code&gt;编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

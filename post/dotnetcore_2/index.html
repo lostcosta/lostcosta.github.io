@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>控制反转（IoC）与依赖注入（DI） - Brein&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Brein" /><meta name="description" content="详解控制反转与依赖注入" /><meta name="keywords" content="ASP.NET Core, 容器, C#" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.84.4 with theme even" />
+
+
+<link rel="canonical" href="https://www.coolgogoing.com/post/dotnetcore_2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="控制反转（IoC）与依赖注入（DI）" />
+<meta property="og:description" content="详解控制反转与依赖注入" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.coolgogoing.com/post/dotnetcore_2/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-10T00:58:02+08:00" />
+<meta property="article:modified_time" content="2021-07-10T00:58:02+08:00" />
+
+<meta itemprop="name" content="控制反转（IoC）与依赖注入（DI）">
+<meta itemprop="description" content="详解控制反转与依赖注入"><meta itemprop="datePublished" content="2021-07-10T00:58:02+08:00" />
+<meta itemprop="dateModified" content="2021-07-10T00:58:02+08:00" />
+<meta itemprop="wordCount" content="1361">
+<meta itemprop="keywords" content="ASP.NET Core,容器,C#," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="控制反转（IoC）与依赖注入（DI）"/>
+<meta name="twitter:description" content="详解控制反转与依赖注入"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Brein&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Brein&#39;s blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">控制反转（IoC）与依赖注入（DI）</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021年7月10日 00时58分02秒 </span>
+        <div class="post-category">
+            <a href="/categories/.net%E5%BC%80%E5%8F%91/"> .Net开发 </a>
+            </div>
+          <span class="more-meta"> 约 1361 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    <div class="post-content">
+      <p>控制反转（英语：<code>Inversion of Control</code>，缩写为<code>IoC</code>），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（<code>Dependency Injection</code>，简称<code>DI</code>），还有一种方式叫“依赖查找”（<code>Dependency Lookup</code>）。实现控制反转主要有两种方式：依赖注入和依赖查找。两者的区别在于，前者是被动的接收对象，在类 A 的实例创建过程中即创建了依赖的 B 对象，通过类型或名称来判断将不同的对象注入到不同的属性中，而后者是主动索取相应类型的对象，获得依赖对象的时间也可以在代码中自由控制。</p>
+<h3 id="依赖注入">依赖注入</h3>
+<ul>
+<li>基于接口。实现特定接口以供外部容器注入所依赖类型的对象。</li>
+<li>基于 <code>set</code> 方法。实现特定属性的 <code>public set</code> 方法，来让外部容器调用传入所依赖类型的对象。</li>
+<li>基于构造函数。实现特定参数的构造函数，在新建对象时传入所依赖类型的对象。</li>
+</ul>
+<h3 id="依赖查找">依赖查找</h3>
+<p>依赖查找更加主动，在需要的时候通过调用框架提供的方法来获取对象，获取时需要提供相关的配置文件路径、key 等信息来确定获取对象的状态。</p>
+<h3 id="控制和反转">控制和反转</h3>
+<p>什么是控制？又控制了什么？从接触面向对象以来，我们碰到的最多的问题就是解耦。对于一个程序来说，对象之间的耦合再正常不过，因此也诞生出了很多设计模式来解决这个问题。今天说的控制反转就是众多解决方法中比较流行的一种。控制，顾名思义就是对程序的处理流程，组成方式进行控制，这一切都是我们写程序的来决定的。为了解决一个问题，我们都是主动出击，需要什么就<code>new</code>什么，这过程中设计的一切细节都要我们亲自掌握。而<code>Ioc</code>的思想就是帮助我们把我们需要的对象（或者说资源）创建出来，我们在处理中需要什么，它都可以直接拿给我们来用。创建对象的，提供资源的主动权已经不再是我们，而是<code>Ioc</code>容器。所以，在这种设计思想下的程序中，<code>Ioc</code>容器是控制的一方，控制这整个程序的资源。那么反转也相应的更容易理解了，我们不再控制一切，专注于业务，从原来的完全掌控方，变为了资源的使用方，控制资源的事情都交了出去，实现了反转。</p>
+<p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1625853744/MyPic/ASP.NET%20Core%20in%20Action/2-1.png" alt="IoC"></p>
+<p>如图所示，当程序启动时，将各种功能模块注册到<code>IoC</code>容器中，利用容器统一管理资源。业务逻辑（另一个对象）只需关注自己的实现，而不必再分心关注各个所需资源的创建，引用等。任务需要的资源，<code>IoC</code>容器都会自动注入到我们的逻辑中来。这个注入的过程也就是<strong>依赖注入</strong>。因此依赖注入是实现<code>IoC</code>的一种手段。</p>
+<h3 id="依赖注入-1">依赖注入</h3>
+<p>本教程也是<code>ASP.NET Core</code>的一个预备知识的介绍，因此下面将<code>ASP.NET Core</code>中的<code>IoC</code>相关代码展示出来，以供理解。</p>
+<p>注册功能模块：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//Startup.cs
+</span><span class="c1"></span><span class="k">public</span> <span class="k">void</span> <span class="n">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="p">...</span>
+  <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">IUserService</span><span class="p">,</span><span class="n">UserService</span><span class="p">&gt;();</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>注入到业务逻辑中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="c1">//AuthorizeController
+</span><span class="c1"></span><span class="na">[ApiController]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">AuthorizeController</span><span class="p">:</span> <span class="n">BaseController</span>
+<span class="p">{</span>
+  <span class="k">private</span> <span class="k">readonly</span> <span class="n">IUserService</span> <span class="m">_</span><span class="n">userService</span><span class="p">;</span>
+
+  <span class="k">public</span> <span class="n">AuthorizeController</span><span class="p">(</span><span class="n">IUserService</span> <span class="n">userService</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="m">_</span><span class="n">userService</span> <span class="p">=</span> <span class="n">userService</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>模块实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c#" data-lang="c#"><span class="k">public</span> <span class="k">interface</span> <span class="n">IUserService</span>
+<span class="p">{</span>
+  <span class="kt">string</span> <span class="n">GetUserName</span><span class="p">(</span><span class="kt">string</span> <span class="n">userId</span><span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="n">ValidatePassword</span><span class="p">(</span><span class="kt">string</span> <span class="n">userName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">password</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UserService</span><span class="p">:</span><span class="n">IUserService</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">string</span> <span class="n">GetUserName</span><span class="p">(</span><span class="kt">string</span> <span class="n">userId</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">return</span> <span class="s">$&#34;UserName:{userId}&#34;</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="kt">bool</span> <span class="n">ValidatePassword</span><span class="p">(</span><span class="kt">string</span> <span class="n">userName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">password</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">userName</span> <span class="p">==</span> <span class="s">&#34;xxxxxx&#34;</span> <span class="p">&amp;&amp;</span> <span class="n">password</span> <span class="p">==</span> <span class="s">&#34;xxxxxxxxx&#34;</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="总结">总结</h3>
+<ul>
+<li>控制反转是一种在软件工程中解耦合的思想，调用类只依赖<strong>接口</strong>，而不依赖具体的实现类，减少了耦合。类与类之间的耦合关系在运行时由<code>IoC</code>容器建立。控制权交给了容器，在运行的时候由容器决定将具体的实现动态的<strong>注入</strong>到调用类的对象（业务逻辑）中。</li>
+<li>依赖注入是控制反转的一种实现方式。依赖注入就是将实例变量传入到一个对象（业务逻辑）中去。</li>
+</ul>
+<p>（全文完）</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Brein</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021年7月10日 00时58分02秒
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/asp.net-core/">ASP.NET Core</a>
+          <a href="/tags/%E5%AE%B9%E5%99%A8/">容器</a>
+          <a href="/tags/c/">C#</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/dotnetcore_03/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">.Net中的特性(Attribute)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/dotnetcore_01/">
+            <span class="next-text nav-default">ASP.NET Core 简介</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.coolgogoing.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    
+    
+  </div>
+
+  <span class="copyright-year">
+    &copy;
+    2018 -
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span>Brein. All Rights Reserved</span>
+  </span>
+  <span class="power-by">
+    京ICP备2021020827号-1
+  </span>
+  <span class="power-by">
+    <div style="width:300px;margin:0 auto;">
+      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011502004807"
+        style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/images/beian.png"
+          style="float:left;" />
+        <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11011502004807号
+        </p>
+      </a>
+    </div>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

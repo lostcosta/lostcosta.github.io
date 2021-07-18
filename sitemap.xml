@@ -9,21 +9,126 @@
   </url>
   
   <url>
-    <loc>https://www.coolgogoing.com/tags/bootstrap/</loc>
-    <lastmod>2020-11-14T13:02:56+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://www.coolgogoing.com/</loc>
-    <lastmod>2020-11-14T13:02:56+08:00</lastmod>
+    <lastmod>2021-07-17T09:32:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://www.coolgogoing.com/categories/</loc>
+    <lastmod>2021-07-17T09:32:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/post/</loc>
+    <lastmod>2021-07-17T09:32:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/redis/</loc>
+    <lastmod>2021-07-17T09:32:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/categories/redis/</loc>
+    <lastmod>2021-07-17T09:32:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/post/redis_01/</loc>
+    <lastmod>2021-07-17T09:32:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/</loc>
+    <lastmod>2021-07-17T09:32:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/post/dotnetcore_03/</loc>
+    <lastmod>2021-07-10T21:58:57+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/categories/.net%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2021-07-10T21:58:57+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/asp.net-core/</loc>
+    <lastmod>2021-07-10T21:58:57+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/attribute/</loc>
+    <lastmod>2021-07-10T21:58:57+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/c#/</loc>
+    <lastmod>2021-07-10T21:58:57+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/%E5%AE%B9%E5%99%A8/</loc>
+    <lastmod>2021-07-10T00:58:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/post/dotnetcore_2/</loc>
+    <lastmod>2021-07-10T00:58:02+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/.net/</loc>
+    <lastmod>2021-07-09T01:08:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/post/dotnetcore_01/</loc>
+    <lastmod>2021-07-09T01:08:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/web-application/</loc>
+    <lastmod>2021-07-09T01:08:44+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.coolgogoing.com/tags/bootstrap/</loc>
     <lastmod>2020-11-14T13:02:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -45,20 +150,6 @@
   
   <url>
     <loc>https://www.coolgogoing.com/categories/php/</loc>
-    <lastmod>2020-11-14T13:02:56+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.coolgogoing.com/post/</loc>
-    <lastmod>2020-11-14T13:02:56+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.coolgogoing.com/tags/</loc>
     <lastmod>2020-11-14T13:02:56+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -144,13 +235,6 @@
   <url>
     <loc>https://www.coolgogoing.com/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
     <lastmod>2019-04-27T18:09:53+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.coolgogoing.com/categories/.net%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2019-04-26T23:14:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>容器 on Brein&#39;s blog</title>
+    <link>https://www.coolgogoing.com/tags/%E5%AE%B9%E5%99%A8/</link>
+    <description>Recent content in 容器 on Brein&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Brein. All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 10 Jul 2021 00:58:02 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>控制反转（IoC）与依赖注入（DI）</title>
+      <link>https://www.coolgogoing.com/post/dotnetcore_2/</link>
+      <pubDate>Sat, 10 Jul 2021 00:58:02 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/dotnetcore_2/</guid>
+      <description>&lt;p&gt;控制反转（英语：&lt;code&gt;Inversion of Control&lt;/code&gt;，缩写为&lt;code&gt;IoC&lt;/code&gt;），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（&lt;code&gt;Dependency Injection&lt;/code&gt;，简称&lt;code&gt;DI&lt;/code&gt;），还有一种方式叫“依赖查找”（&lt;code&gt;Dependency Lookup&lt;/code&gt;）。实现控制反转主要有两种方式：依赖注入和依赖查找。两者的区别在于，前者是被动的接收对象，在类 A 的实例创建过程中即创建了依赖的 B 对象，通过类型或名称来判断将不同的对象注入到不同的属性中，而后者是主动索取相应类型的对象，获得依赖对象的时间也可以在代码中自由控制。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

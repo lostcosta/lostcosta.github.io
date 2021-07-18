@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ASP.NET Core 简介 - Brein&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Brein" /><meta name="description" content="ASP.NET Core 总体介绍" /><meta name="keywords" content=".NET, C#" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.84.4 with theme even" />
+
+
+<link rel="canonical" href="https://www.coolgogoing.com/post/dotnetcore_01/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="ASP.NET Core 简介" />
+<meta property="og:description" content="ASP.NET Core 总体介绍" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.coolgogoing.com/post/dotnetcore_01/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-09T01:08:44+08:00" />
+<meta property="article:modified_time" content="2021-07-09T01:08:44+08:00" />
+
+<meta itemprop="name" content="ASP.NET Core 简介">
+<meta itemprop="description" content="ASP.NET Core 总体介绍"><meta itemprop="datePublished" content="2021-07-09T01:08:44+08:00" />
+<meta itemprop="dateModified" content="2021-07-09T01:08:44+08:00" />
+<meta itemprop="wordCount" content="1437">
+<meta itemprop="keywords" content=".NET,C#,ASP.NET Core,web application," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ASP.NET Core 简介"/>
+<meta name="twitter:description" content="ASP.NET Core 总体介绍"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Brein&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Brein&#39;s blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">ASP.NET Core 简介</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021年7月9日 01时08分44秒 </span>
+        <div class="post-category">
+            <a href="/categories/.net%E5%BC%80%E5%8F%91/"> .Net开发 </a>
+            </div>
+          <span class="more-meta"> 约 1437 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    
+    <div class="post-content">
+      <p>随着微软逐渐拥抱开源，旗下.NET 家族也转向跨平台。虽然国内使用.NET 技术栈的项目比较少，但我相信随着对 <code>.NET Core</code> 的逐步了解，在国内其也将拥有一片天地。我也希望为 <code>.NET Core</code> 在国内的普及贡献自己的一份力量。本次带来 <code>ASP.NET Core</code> 入门教程。下面是第一章，对 <code>ASP.NET Core</code> 做一个总体的介绍。</p>
+<p><code>ASP.NET Core</code> 是一个跨平台、开源的 web 应用程序框架，您可以使用它快速构建动态的、服务器端呈现的应用程序。您还可以使用 <code>ASP.NET Core</code> 创建 HTTP APIs，移动应用程序、基于浏览器的单页应用程序(如 <code>Vue</code>，<code>Angular</code> 和 <code>React</code>)或其他后端应用程序都可以使用这些 API 来提供服务。</p>
+<p>开发 <code>ASP.NET Core</code> 的动机是希望创建一个能实现以下四个主要目标的 WEB 框架:</p>
+<ul>
+<li>跨平台运行和开发</li>
+<li>有一个模块化的架构，以便于维护</li>
+<li>可以完全的作为开源软件来进行开发</li>
+<li>适用于当前 WEB 开发的趋势，例如客户端应用程序和云环境部署</li>
+</ul>
+<p>如下图所示，<code>ASP.NET Core</code> 运行在 <code>.NET Core</code> 和 <code>.NET 5.0</code>，因此它可以跨平台运行。相反，<code>ASP.NET</code> 只能运行在 <code>.NET Framework</code> ，所以它是完全和 Windows 操作系统绑定起来的。</p>
+<p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1625765902/MyPic/ASP.NET%20Core%20in%20Action/1-1.png" alt="ASP.NET Core 运行环境"></p>
+<p><code>.NET Core</code> ( 及其继承者，<code>.NET 5.0</code> ) 使用了许多与 .NET Framework 相同的 APIs，但它更加模块化，并且只实现了 <code>.NET Framework</code> 的部分子集，目的是提供一个更简单的实现和编程模型。它是一个完全独立的平台，而不是一个 <code>.NET Framework</code> 的分支，尽管他们的许多 API 使用的代码都是类似的。</p>
+<p>微软默认提供了一个跨平台的 WEB 服务器，叫<code>Kestrel</code>。通过添加一个 <code>ASP.NET Core</code> WEB 服务器到你的应用程序，你的应用程序就可以作为一个 WEB 应用程序运行。<code>ASP.NET Core</code> 是由许多小型库组成的，你可以从这些库中进行选择，以便为应用程序提供不同的特性。你几乎不需要所有可用的库，只需要添加所需的内容。有些库是常见的，实际上会出现在您创建的每个应用程序中，例如用于读取配置文件或执行日志记录的库。其他库建立在这些基本功能之上，以提供特定于应用程序的功能，例如通过 Facebook 或 Google 的第三方登录。</p>
+<p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1625766887/MyPic/ASP.NET%20Core%20in%20Action/1-2.png" alt="img"></p>
+<p><code>ASP.NET Core</code> 可以作为各种客户端的服务器端应用程序：它可以为传统 WEB 应用程序提供 HTML 页面，可以为客户端 SPA 应用程序提供 REST API，还可以作为客户端应用程序的特定 RPC 服务。</p>
+<p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1625767371/MyPic/ASP.NET%20Core%20in%20Action/1-3.png" alt="img"></p>
+<p>ASP.NET 的上一个版本，IIS 与应用程序紧密耦合。而 <code>ASP.NET Core</code> 中的托管模型更简单。IIS 将请求发送给 <code>ASP.NET Core</code> 应用程序中的自托管 WEB 服务器并接收响应，不需要对应用程序内部的处理有更深入的了解。</p>
+<p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1625767685/MyPic/ASP.NET%20Core%20in%20Action/1-4.png" alt="img"></p>
+<p>当您使用 <code>ASP.NET Core</code> 构建 web 应用程序时，浏览器仍将使用与以前相同的 HTTP 协议与您的应用程序进行通信。<code>ASP.NET Core</code> 本身包含了在服务器上处理请求所需要的一切，包括验证请求是否有效、处理登录细节和生成 HTML 等。</p>
+<p><img src="https://res.cloudinary.com/dfuc91ene/image/upload/v1625767971/MyPic/ASP.NET%20Core%20in%20Action/1-5.png" alt="img"></p>
+<p><code>ASP.NET Core</code> 应用程序从网络接收请求。每个 <code>ASP.NET Core</code> 应用程序都有一个内置的 WEB 服务器，默认情况下是 Kestrel，它负责接收原始请求并构建数据的内部表示，即一个 <code>HttpContext</code> 对象，该对象可以被应用程序的其他部分使用。通过这种表示，您的应用程序应该具有创建对请求的适当响应所需的所有细节。它可以使用存储在 <code>HttpContext</code> 中的细节来生成适当的响应，这可能是生成一些 HTML，返回一个“拒绝访问”消息，或者发送一封电子邮件，这些都取决于您的应用程序的需求。一旦应用程序处理完请求，它将返回响应到 WEB 服务器。<code>ASP.NET Core</code> WEB 服务器将这个表示转换成原始的 HTTP 响应并发送到网络，网络将把它转发到用户的浏览器。</p>
+<h3 id="总结">总结</h3>
+<ul>
+<li><code>ASP.NET Core</code> 是一个以现代软件体系结构实践和模块化为核心的新的 WEB 框架。</li>
+<li>遗留技术，如 WCF 服务器和 Web 表单不能与 <code>ASP.NET Core</code> 一起使用。</li>
+<li><code>ASP.NET Core</code> 允许您动态地构建对给定请求的响应。</li>
+<li><code>ASP.NET Core</code> 应用程序包含一个 WEB 服务器，作为请求的入口点。</li>
+<li><code>ASP.NET Core</code> 应用程序通常由反向代理服务器从互联网上保护起来，该服务器将请求转发给应用程序。</li>
+</ul>
+<p>(全文完)</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Brein</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021年7月9日 01时08分44秒
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/.net/">.NET</a>
+          <a href="/tags/c/">C#</a>
+          <a href="/tags/asp.net-core/">ASP.NET Core</a>
+          <a href="/tags/web-application/">web application</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/dotnetcore_2/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">控制反转（IoC）与依赖注入（DI）</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/laravel_bootstrap_install/">
+            <span class="next-text nav-default">laravel8使用bootstrap框架</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.coolgogoing.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    
+    
+  </div>
+
+  <span class="copyright-year">
+    &copy;
+    2018 -
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span>Brein. All Rights Reserved</span>
+  </span>
+  <span class="power-by">
+    京ICP备2021020827号-1
+  </span>
+  <span class="power-by">
+    <div style="width:300px;margin:0 auto;">
+      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011502004807"
+        style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/images/beian.png"
+          style="float:left;" />
+        <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11011502004807号
+        </p>
+      </a>
+    </div>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

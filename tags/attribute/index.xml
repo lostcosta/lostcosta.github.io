@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Attribute on Brein&#39;s blog</title>
+    <link>https://www.coolgogoing.com/tags/attribute/</link>
+    <description>Recent content in Attribute on Brein&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Brein. All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 10 Jul 2021 21:58:57 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/tags/attribute/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>.Net中的特性(Attribute)</title>
+      <link>https://www.coolgogoing.com/post/dotnetcore_03/</link>
+      <pubDate>Sat, 10 Jul 2021 21:58:57 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/dotnetcore_03/</guid>
+      <description>&lt;p&gt;本文作为&lt;code&gt;ASP.NET Core&lt;/code&gt;的预备知识，详细讲解下&lt;code&gt;.NET&lt;/code&gt;中的&lt;strong&gt;特性&lt;/strong&gt;。&lt;strong&gt;特性&lt;/strong&gt;在&lt;code&gt;ASP.NET Core&lt;/code&gt;开发中是使用最频繁的技术之一，同时也是&lt;code&gt;AOP&lt;/code&gt;编程的技术基础。因此很又必要对&lt;strong&gt;特性&lt;/strong&gt;进行一个详细的说明，为将来的开发打下基础。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

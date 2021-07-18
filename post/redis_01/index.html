@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Redis基础 - Brein&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Brein" /><meta name="description" content="Redis基础，使用说明" /><meta name="keywords" content="Redis" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.84.4 with theme even" />
+
+
+<link rel="canonical" href="https://www.coolgogoing.com/post/redis_01/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+<meta property="og:title" content="Redis基础" />
+<meta property="og:description" content="Redis基础，使用说明" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.coolgogoing.com/post/redis_01/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-07-17T09:32:01+08:00" />
+<meta property="article:modified_time" content="2021-07-17T09:32:01+08:00" />
+
+<meta itemprop="name" content="Redis基础">
+<meta itemprop="description" content="Redis基础，使用说明"><meta itemprop="datePublished" content="2021-07-17T09:32:01+08:00" />
+<meta itemprop="dateModified" content="2021-07-17T09:32:01+08:00" />
+<meta itemprop="wordCount" content="5529">
+<meta itemprop="keywords" content="Redis," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Redis基础"/>
+<meta name="twitter:description" content="Redis基础，使用说明"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Brein&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Brein&#39;s blog</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Redis基础</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021年7月17日 09时32分01秒 </span>
+        <div class="post-category">
+            <a href="/categories/redis/"> Redis </a>
+            </div>
+          <span class="more-meta"> 约 5529 字 </span>
+          <span class="more-meta"> 预计阅读 12 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux-下的安装">Linux 下的安装</a></li>
+    <li><a href="#性能测试工具">性能测试工具</a></li>
+    <li><a href="#基础知识">基础知识</a>
+      <ul>
+        <li><a href="#五大数据类型">五大数据类型</a></li>
+        <li><a href="#三种特殊数据类型">三种特殊数据类型</a></li>
+        <li><a href="#事务">事务</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><code>Redis</code>(<code>Re</code>mote <code>Di</code>ctionary <code>S</code>erver)是一个使用<code>ANSI C</code>编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。</p>
+<h2 id="linux-下的安装">Linux 下的安装</h2>
+<p>官网下载最新稳定版本：<a href="https://redis.io/download">Redis</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">wget http://download.redis.io/releases/redis-6.0.8.tar.gz
+tar -zxvf redis-6.0.8.tar.gz
+<span class="nb">cd</span> redis-6.0.8
+make
+</code></pre></td></tr></table>
+</div>
+</div><p>执行完 <code>make </code>命令后，<code>redis-6.0.8</code> 的 <code>src </code>目录下会出现编译后的 <code>redis</code> 服务程序 <code>redis-server</code>，还有用于测试的客户端程序 <code>redis-cli</code>。</p>
+<p>默认配置启动：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> src
+./redis-server
+</code></pre></td></tr></table>
+</div>
+</div><p>自定义配置文件启动：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> src
+./redis-server ../custom/redis.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>检查 redis 是否正常启动（同样适用其他软件）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>root@VM-16-16-centos ~<span class="o">]</span><span class="c1"># ps -ef | grep redis</span>
+root     <span class="m">17602</span> <span class="m">20682</span>  <span class="m">0</span> 11:48 pts/0    00:00:00 grep --color<span class="o">=</span>auto redis
+polkitd  <span class="m">29312</span> <span class="m">29296</span>  <span class="m">0</span> Jul16 pts/0    00:01:18 redis-server *:6379
+root     <span class="m">29628</span> <span class="m">29546</span>  <span class="m">0</span> Jul16 ?        00:00:00 redis-cli
+</code></pre></td></tr></table>
+</div>
+</div><p>启动 <code>redis </code>服务进程后，就可以使用测试客户端程序 <code>redis-cli</code> 和<code>redis</code>服务交互了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">./redis-cli
+127.0.0.1:6379&gt; ping
+PONG
+127.0.0.1:6379&gt; dbsize
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="性能测试工具">性能测试工具</h2>
+<p><code>redis-benchmark</code>是自带的性能测试工具，方便我们轻松掌握服务器配置后的性能指标，支持以下参数：</p>
+<blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">Usage: redis-benchmark <span class="o">[</span>-h &lt;host&gt;<span class="o">]</span> <span class="o">[</span>-p &lt;port&gt;<span class="o">]</span> <span class="o">[</span>-c &lt;clients&gt;<span class="o">]</span> <span class="o">[</span>-n &lt;requests<span class="o">]</span>&gt; <span class="o">[</span>-k &lt;boolean&gt;<span class="o">]</span>
+
+ -h &lt;hostname&gt;      Server hostname <span class="o">(</span>default 127.0.0.1<span class="o">)</span>
+ -p &lt;port&gt;          Server port <span class="o">(</span>default 6379<span class="o">)</span>
+ -s &lt;socket&gt;        Server socket <span class="o">(</span>overrides host and port<span class="o">)</span>
+ -a &lt;password&gt;      Password <span class="k">for</span> Redis Auth
+ -c &lt;clients&gt;       Number of parallel connections <span class="o">(</span>default 50<span class="o">)</span>
+ -n &lt;requests&gt;      Total number of requests <span class="o">(</span>default 100000<span class="o">)</span>
+ -d &lt;size&gt;          Data size of SET/GET value in bytes <span class="o">(</span>default 2<span class="o">)</span>
+ --dbnum &lt;db&gt;       SELECT the specified db number <span class="o">(</span>default 0<span class="o">)</span>
+ -k &lt;boolean&gt;       <span class="nv">1</span><span class="o">=</span>keep alive <span class="nv">0</span><span class="o">=</span>reconnect <span class="o">(</span>default 1<span class="o">)</span>
+ -r &lt;keyspacelen&gt;   Use random keys <span class="k">for</span> SET/GET/INCR, random values <span class="k">for</span> SADD
+  Using this option the benchmark will expand the string __rand_int__
+  inside an argument with a <span class="m">12</span> digits number in the specified range
+  from <span class="m">0</span> to keyspacelen-1. The substitution changes every <span class="nb">time</span> a <span class="nb">command</span>
+  is executed. Default tests use this to hit random keys in the
+  specified range.
+ -P &lt;numreq&gt;        Pipeline &lt;numreq&gt; requests. Default <span class="m">1</span> <span class="o">(</span>no pipeline<span class="o">)</span>.
+ -q                 Quiet. Just show query/sec values
+ --csv              Output in CSV format
+ -l                 Loop. Run the tests forever
+ -t &lt;tests&gt;         Only run the comma separated list of tests. The <span class="nb">test</span>
+                    names are the same as the ones produced as output.
+ -I                 Idle mode. Just open N idle connections and wait.
+</code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<p>通常使用以下命令进行测试即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">redis-benchmark -q -n <span class="m">100000</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>效果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">root@61b96dd72482:/data# redis-benchmark -q -n <span class="m">100000</span>
+PING_INLINE: 27525.46 requests per second, <span class="nv">p50</span><span class="o">=</span>1.471 msec
+PING_MBULK: 28636.88 requests per second, <span class="nv">p50</span><span class="o">=</span>1.415 msec
+SET: 28003.36 requests per second, <span class="nv">p50</span><span class="o">=</span>1.447 msec
+GET: 27240.53 requests per second, <span class="nv">p50</span><span class="o">=</span>1.479 msec
+INCR: 27979.86 requests per second, <span class="nv">p50</span><span class="o">=</span>1.479 msec
+LPUSH: 27270.25 requests per second, <span class="nv">p50</span><span class="o">=</span>1.487 msec
+RPUSH: 27987.69 requests per second, <span class="nv">p50</span><span class="o">=</span>1.463 msec
+LPOP: 27670.17 requests per second, <span class="nv">p50</span><span class="o">=</span>1.479 msec
+RPOP: 27548.21 requests per second, <span class="nv">p50</span><span class="o">=</span>1.479 msec
+SADD: 24021.14 requests per second, <span class="nv">p50</span><span class="o">=</span>1.471 msec
+HSET: 26546.32 requests per second, <span class="nv">p50</span><span class="o">=</span>1.487 msec
+SPOP: 27862.91 requests per second, <span class="nv">p50</span><span class="o">=</span>1.439 msec
+ZADD: 27277.69 requests per second, <span class="nv">p50</span><span class="o">=</span>1.487 msec
+ZPOPMIN: 28288.54 requests per second, <span class="nv">p50</span><span class="o">=</span>1.431 msec
+LPUSH <span class="o">(</span>needed to benchmark LRANGE<span class="o">)</span>: 26759.43 requests per second, <span class="nv">p50</span><span class="o">=</span>1.495 msec
+LRANGE_100 <span class="o">(</span>first <span class="m">100</span> elements<span class="o">)</span>: 14900.91 requests per second, <span class="nv">p50</span><span class="o">=</span>2.175 msec
+LRANGE_300 <span class="o">(</span>first <span class="m">300</span> elements<span class="o">)</span>: 6345.98 requests per second, <span class="nv">p50</span><span class="o">=</span>5.303 msec
+LRANGE_500 <span class="o">(</span>first <span class="m">500</span> elements<span class="o">)</span>: 4289.82 requests per second, <span class="nv">p50</span><span class="o">=</span>7.503 msec
+LRANGE_600 <span class="o">(</span>first <span class="m">600</span> elements<span class="o">)</span>: 3748.13 requests per second, <span class="nv">p50</span><span class="o">=</span>8.271 msec
+MSET <span class="o">(</span><span class="m">10</span> keys<span class="o">)</span>: 23228.80 requests per second, <span class="nv">p50</span><span class="o">=</span>1.703 msec
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Redis</code>是单线程的，但是也是很快的，它是基于内存操作的，将所有数据都放在内存中的。<code>CPU</code>不是它的性能瓶颈，它的性能主要和网络带宽和内存相关。多线程切换是需要切换上下文的，是耗时的操作。</p>
+<h2 id="基础知识">基础知识</h2>
+<p><code>Redis</code>默认有 16 个数据库，默认使用的是第一个，可以使用<code>select</code>切换数据库：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">root@61b96dd72482:/data# redis-cli
+127.0.0.1:6379&gt; <span class="k">select</span> <span class="m">3</span>
+OK
+127.0.0.1:6379<span class="o">[</span>3<span class="o">]</span>&gt; dbsize <span class="c1">#查看DB大小</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379<span class="o">[</span>3<span class="o">]</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>查看所有<code>key</code>使用<code>keys *</code>命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt; keys * <span class="c1">#查看数据库所有命令</span>
+<span class="o">(</span>empty array<span class="o">)</span>
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>清空数据有两个命令：清楚当前数据库<code>flushdb</code>， 清楚所有数据库<code>flushall</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt; flushdb
+OK
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt; flushall
+OK
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="五大数据类型">五大数据类型</h3>
+<p><code>Redis</code>是一个开源(<code>BSD</code>)的，内存中的数据结构存储系统，它可以用作数据库、缓存和消息中间件 MQ。它支持多种数据结构：字符串（<code>strings</code>），散列（<code>hashes</code>)，列表（<code>lists</code>），集合（<code>sets</code>），有序集合（<code>sorted sets</code>）与范围查询，<code>bitmaps</code>，<code>hyperloglogs</code>和地理空间（<code>geospatial</code>）索引半径查询。<code>Redis</code>内置了复制，LUA 脚本，LRU 驱动事件，事务和不同级别的磁盘持久化，并通过哨兵和自动分区提供高可用性。</p>
+<h4 id="redis-key">Redis-Key</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; <span class="nb">set</span> name brein
+OK
+127.0.0.1:6379&gt; exists name <span class="c1">#是否存在</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt;
+<span class="c1">#设置10秒过期</span>
+127.0.0.1:6379&gt; <span class="nb">set</span> order abcd
+OK
+127.0.0.1:6379&gt; expire order <span class="m">10</span> <span class="c1">#10是秒数</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; ttl order <span class="c1">#查看还剩几秒</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">6</span>
+127.0.0.1:6379&gt; ttl order
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+127.0.0.1:6379&gt; ttl order
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">3</span>
+127.0.0.1:6379&gt; ttl order
+<span class="o">(</span>integer<span class="o">)</span> -2
+127.0.0.1:6379&gt; exists order
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379&gt; get order
+<span class="o">(</span>nil<span class="o">)</span>
+127.0.0.1:6379&gt;
+<span class="c1">#移动数据到别的库</span>
+127.0.0.1:6379&gt; <span class="nb">set</span> age <span class="m">18</span>
+OK
+127.0.0.1:6379&gt; get age
+<span class="s2">&#34;18&#34;</span>
+127.0.0.1:6379&gt; move age <span class="m">1</span> <span class="c1">#1为要移动到的库</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; <span class="k">select</span> <span class="m">1</span>
+OK
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt; get age
+<span class="s2">&#34;18&#34;</span>
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt;
+<span class="c1">#删除数据</span>
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt; del age
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt; get age
+<span class="o">(</span>nil<span class="o">)</span>
+127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt;
+<span class="c1">#查看类型</span>
+127.0.0.1:6379&gt; keys *
+1<span class="o">)</span> <span class="s2">&#34;age&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;name&#34;</span>
+127.0.0.1:6379&gt; <span class="nb">type</span> name
+string
+127.0.0.1:6379&gt; <span class="nb">type</span> age
+string
+127.0.0.1:6379&gt;
+
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="字符串类型string">字符串类型（string）</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; flushdb
+OK
+127.0.0.1:6379&gt; <span class="nb">set</span> key1 v1
+OK
+127.0.0.1:6379&gt; append  key1 v2 <span class="c1"># 追加v2到key1中 key若不存在就相当于set key</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+127.0.0.1:6379&gt; get key1
+<span class="s2">&#34;v1v2&#34;</span>
+127.0.0.1:6379&gt; strlen key1 <span class="c1"># 取得key1中的数据长度</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+<span class="c1">#增加，减少 incr decr incrby decrby</span>
+127.0.0.1:6379&gt; <span class="nb">set</span> views <span class="m">0</span>
+OK
+127.0.0.1:6379&gt; get views
+<span class="s2">&#34;0&#34;</span>
+127.0.0.1:6379&gt; incr views
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; get views
+<span class="s2">&#34;1&#34;</span>
+127.0.0.1:6379&gt; decr views
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379&gt; get views
+<span class="s2">&#34;0&#34;</span>
+127.0.0.1:6379&gt; incrby views <span class="m">10</span> <span class="c1">#步长 10</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">10</span>
+127.0.0.1:6379&gt; get views
+<span class="s2">&#34;10&#34;</span>
+127.0.0.1:6379&gt; decrby views <span class="m">5</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">5</span>
+127.0.0.1:6379&gt; get views
+<span class="s2">&#34;5&#34;</span>
+<span class="c1">#######################################################################################</span>
+<span class="c1">#字符串范围</span>
+127.0.0.1:6379&gt; get key1
+<span class="s2">&#34;hello, brein&#34;</span>
+127.0.0.1:6379&gt; getrange key1 <span class="m">0</span> <span class="m">4</span> <span class="c1">#截取字符串[0, 3]</span>
+<span class="s2">&#34;hello&#34;</span>
+127.0.0.1:6379&gt; getrange key1 <span class="m">0</span> -1 <span class="c1">#获取全部字符串</span>
+<span class="s2">&#34;hello, brein&#34;</span>
+<span class="c1">#替换</span>
+127.0.0.1:6379&gt; setrange key1 <span class="m">0</span> zbx: <span class="c1">#替换指定位置开始的字符串</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">12</span>
+127.0.0.1:6379&gt; get key1
+<span class="s2">&#34;zbx:o, brein&#34;</span>
+
+<span class="c1"># setex (set with expire) #设置过期时间</span>
+<span class="c1"># setnx (set if not exist) # 如果不存在才设置(在分布式锁中常常用到)</span>
+127.0.0.1:6379&gt; setex key2 <span class="m">30</span> <span class="s2">&#34;hello&#34;</span>
+OK
+127.0.0.1:6379&gt; ttl key2
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">18</span>
+127.0.0.1:6379&gt; ttl key2
+<span class="o">(</span>integer<span class="o">)</span> -2
+127.0.0.1:6379&gt; setnx key2 <span class="s2">&#34;brein&#34;</span> <span class="c1">#如果不存在则创建，如果存在则失败</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; get key2
+<span class="s2">&#34;brein&#34;</span>
+127.0.0.1:6379&gt;
+<span class="c1">#同时设置多个，利用mset mget</span>
+127.0.0.1:6379&gt; mset k1 v1 k2 v2 k3 v3
+OK
+127.0.0.1:6379&gt; keys *
+1<span class="o">)</span> <span class="s2">&#34;k2&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;k3&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;k1&#34;</span>
+127.0.0.1:6379&gt; mget k1 k2 k3
+1<span class="o">)</span> <span class="s2">&#34;v1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;v2&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;v3&#34;</span>
+127.0.0.1:6379&gt; msetnx k1 v1 k4 v4 <span class="c1">#因为msetnx是原子操作，因为已经存在k1，所以报错，k4也不会存入</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379&gt; get k4
+<span class="o">(</span>nil<span class="o">)</span>
+<span class="c1">#对象</span>
+127.0.0.1:6379&gt; <span class="nb">set</span> user:1 <span class="o">{</span>name:brein, age:18<span class="o">}</span> <span class="c1">#json字符串中不可以有空格</span>
+<span class="o">(</span>error<span class="o">)</span> ERR syntax error
+127.0.0.1:6379&gt; <span class="nb">set</span> user:1 <span class="o">{</span>name:brein,age:18<span class="o">}</span> <span class="c1">#设置一个user：1对象，值为json字符串</span>
+OK
+<span class="c1"># getset -&gt; 先get再set</span>
+127.0.0.1:6379&gt; keys *
+1<span class="o">)</span> <span class="s2">&#34;article:2:views&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;user:1:age&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;user:1&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;user:1:name&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;article:1:views&#34;</span>
+127.0.0.1:6379&gt; getset db redis <span class="c1">#如果不存在key，则返回nil</span>
+<span class="o">(</span>nil<span class="o">)</span>
+127.0.0.1:6379&gt; get db
+<span class="s2">&#34;redis&#34;</span>
+127.0.0.1:6379&gt; getset db mongodb <span class="c1">#如果存在key，获取原来的的值，并设置现在的新值</span>
+<span class="s2">&#34;redis&#34;</span>
+127.0.0.1:6379&gt; get db
+<span class="s2">&#34;mongodb&#34;</span>
+
+
+</code></pre></td></tr></table>
+</div>
+</div><p>注意<code>Redis</code>中<code>key</code>的设计是很灵活的，如下面的形式是完全可以的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; mset article:1:views <span class="m">1000</span> article:2:views <span class="m">200</span>
+OK
+127.0.0.1:6379&gt; mget article:1:views article:2:views
+1<span class="o">)</span> <span class="s2">&#34;1000&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;200&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="列表list">列表（List）</h4>
+<p>在<code>Redis</code>中可以把<code>List</code>作成堆栈（<code>lpush</code> <code>lpop</code>），队列(<code>lpush</code> <code>rpop</code>)，阻塞队列。所有<code>list</code>相关命令都以<code>l</code>开头</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; keys *
+<span class="o">(</span>empty array<span class="o">)</span>
+127.0.0.1:6379&gt; lpush list one <span class="c1">#从左边插入</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; lpush list two
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; lpush list three
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">3</span>
+127.0.0.1:6379&gt; lrange list <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+127.0.0.1:6379&gt; lrange list <span class="m">0</span> <span class="m">1</span>
+1<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+127.0.0.1:6379&gt; rpush list four <span class="c1">#从右边插入</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+127.0.0.1:6379&gt; lrange list <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+<span class="c1">#lpop rpop</span>
+127.0.0.1:6379&gt; lpop list
+<span class="s2">&#34;three&#34;</span>
+127.0.0.1:6379&gt; lrange list <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+127.0.0.1:6379&gt; rpop list
+<span class="s2">&#34;four&#34;</span>
+127.0.0.1:6379&gt; lrange list <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+<span class="c1">#lindex</span>
+127.0.0.1:6379&gt; lindex list <span class="m">0</span>
+<span class="s2">&#34;two&#34;</span>
+127.0.0.1:6379&gt; lindex list <span class="m">1</span>
+<span class="s2">&#34;one&#34;</span>
+<span class="c1">#移除指定值</span>
+127.0.0.1:6379&gt; lpush l2 one
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; lpush l2 two
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; lpush l2 three
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">3</span>
+127.0.0.1:6379&gt; lpush l2 four
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+127.0.0.1:6379&gt; lpush l2 four
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">5</span>
+127.0.0.1:6379&gt; lpush l2 four
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">6</span>
+127.0.0.1:6379&gt; lrange l2 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+6<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+127.0.0.1:6379&gt; lrem l2 <span class="m">1</span> one <span class="c1"># lrem key count item</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; lrange l2 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+127.0.0.1:6379&gt; lrem l2 <span class="m">2</span> four <span class="c1">#list中数据可以重复，此处移除list中2个four</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; lrange l2 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+<span class="c1">#截断</span>
+127.0.0.1:6379&gt; lrange l1 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;six&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;five&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+6<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+7<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+8<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+<span class="c1">#index 是从上到下的 l第一个位置是0 r第一个位置是len-1</span>
+127.0.0.1:6379&gt; lrange l1 <span class="m">0</span> <span class="m">0</span> <span class="c1">#这样可以取得list中某个位置的值</span>
+1<span class="o">)</span> <span class="s2">&#34;six&#34;</span>
+127.0.0.1:6379&gt; lrange l1 <span class="m">0</span> <span class="m">1</span>
+1<span class="o">)</span> <span class="s2">&#34;six&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;five&#34;</span>
+127.0.0.1:6379&gt; ltrim l1 <span class="m">1</span> <span class="m">6</span> <span class="c1">#截取从位置1到位置6的值，截取后list变为截取的新的list</span>
+OK
+127.0.0.1:6379&gt; lrange l1 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;five&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+6<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+<span class="c1">#rpoplpush 移除最后一个元素，并移动到新的列表中</span>
+127.0.0.1:6379&gt; rpoplpush l1 l2
+<span class="s2">&#34;four&#34;</span>
+127.0.0.1:6379&gt; lrange l1 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;five&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+127.0.0.1:6379&gt; lrange l2 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;four&#34;</span>
+<span class="c1">#lset 将列表中指定下标的值替换为另外一个值，相当于更新</span>
+127.0.0.1:6379&gt; exists list
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379&gt; lset list <span class="m">0</span> item <span class="c1"># 注意：列表必须存在才可以使用lset</span>
+<span class="o">(</span>error<span class="o">)</span> ERR no such key
+127.0.0.1:6379&gt; lpush list value1
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; lset list <span class="m">0</span> one
+OK
+127.0.0.1:6379&gt; lrange list <span class="m">0</span> <span class="m">0</span>
+1<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+127.0.0.1:6379&gt; lset list <span class="m">1</span> two <span class="c1">#列表中必须有指定的index才可以更新，否则报错</span>
+<span class="o">(</span>error<span class="o">)</span> ERR index out of range
+<span class="c1">#linsert 格式：linsert key before|after pivot value</span>
+127.0.0.1:6379&gt; linsert list before one hahaha
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; lrange list <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;hahaha&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>小结</p>
+</blockquote>
+<ul>
+<li>列表实际上是一个链表，<code>before node</code>,<code>after node</code>, <code>left</code>, <code>right</code>都可以插入值</li>
+<li>如果<code>key</code>不存在，创建新的链表</li>
+<li>如果<code>key</code>存在，新增内容</li>
+<li>如果移除所有值，空链表，也代表不存在</li>
+<li>在两边插入或者修改值，效率是最高的，中间元素效率会低一些</li>
+</ul>
+<h4 id="集合set">集合（set）</h4>
+<p><code>SET</code>中的值是不能重复的。它是无序的。</p>
+<p>下面是集合相关操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; sadd s1 hello <span class="c1">#插入一个值</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; sadd s1 hello <span class="c1">#不能重复插入</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379&gt; smembers s1 <span class="c1">#显示集合中的所有值</span>
+1<span class="o">)</span> <span class="s2">&#34;hello&#34;</span>
+127.0.0.1:6379&gt; sadd s1 world
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; sismember s1 hello <span class="c1">#判断一个值是否在集合中，在返回1，不在返回0</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; sismember s1 brein
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379&gt; scard s1 <span class="c1">#获取集合中的元素个数</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; sadd s1 remove_item
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; smembers s1
+1<span class="o">)</span> <span class="s2">&#34;world&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;hello&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;remove_item&#34;</span>
+127.0.0.1:6379&gt; srem s1 remove_item <span class="c1">#移除集合中的指定元素</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; smembers s1
+1<span class="o">)</span> <span class="s2">&#34;world&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;hello&#34;</span>
+127.0.0.1:6379&gt; sadd s1 item1 item2 item3 <span class="c1">#插入多个元素</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">3</span>
+127.0.0.1:6379&gt; smembers s1
+1<span class="o">)</span> <span class="s2">&#34;world&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;hello&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;item1&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;item3&#34;</span>
+127.0.0.1:6379&gt; SRANDMEMBER s1 <span class="c1">#随机抽取一个元素</span>
+<span class="s2">&#34;item3&#34;</span>
+127.0.0.1:6379&gt; SRANDMEMBER s1 <span class="m">2</span> <span class="c1">#随机抽取指定个数的元素</span>
+1<span class="o">)</span> <span class="s2">&#34;world&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+127.0.0.1:6379&gt; SPOP s1 <span class="c1">#随机删除一个元素</span>
+<span class="s2">&#34;hello&#34;</span>
+127.0.0.1:6379&gt; SPOP s1 <span class="m">2</span> <span class="c1">#随机删除指定个数的元素</span>
+1<span class="o">)</span> <span class="s2">&#34;item1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;world&#34;</span>
+<span class="c1">#将一个指定的值移动到另外一个集合中</span>
+127.0.0.1:6379&gt; SMEMBERS s1
+1<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;item3&#34;</span>
+127.0.0.1:6379&gt; sadd s2 item1
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; SMOVE s1 s2 item2 <span class="c1">#移动指定值 smove source destination element</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; SMEMBERS s1
+1<span class="o">)</span> <span class="s2">&#34;item3&#34;</span>
+127.0.0.1:6379&gt; SMEMBERS s2
+1<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;item1&#34;</span>
+<span class="c1">#实际业务中可能存在类似“共同关注” “共同好友”这样的需求，可以利用SET的交集计算</span>
+127.0.0.1:6379&gt; SMEMBERS s1
+1<span class="o">)</span> <span class="s2">&#34;c&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;a&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;b&#34;</span>
+127.0.0.1:6379&gt; SMEMBERS s2
+1<span class="o">)</span> <span class="s2">&#34;d&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;c&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;e&#34;</span>
+127.0.0.1:6379&gt; sdiff s1 s2 <span class="c1">#差集</span>
+1<span class="o">)</span> <span class="s2">&#34;a&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;b&#34;</span>
+127.0.0.1:6379&gt; SINTER s1 s2 <span class="c1">#交集</span>
+1<span class="o">)</span> <span class="s2">&#34;c&#34;</span>
+127.0.0.1:6379&gt; SUNION s1 s2 <span class="c1">#并集</span>
+1<span class="o">)</span> <span class="s2">&#34;c&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;a&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;b&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;d&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;e&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="哈希hash">哈希（hash）</h4>
+<p>可以是单个值操作：<code>hset key field value</code></p>
+<p>同时设置多个值时，类似<code>MAP</code>集合：<code>hset/hmset key field1 value1 field2 value2...</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; hset hash1 item1 value1 item2 value2
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; hget hash1 item1
+<span class="s2">&#34;value1&#34;</span>
+127.0.0.1:6379&gt; HGETALL hash1 <span class="c1">#获取全部</span>
+1<span class="o">)</span> <span class="s2">&#34;item1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;value1&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;value2&#34;</span>
+127.0.0.1:6379&gt; hmset hash2 item1 value1 item2 value2 <span class="c1">#hset hmset 这里一样</span>
+OK
+127.0.0.1:6379&gt; hgetall hash2
+1<span class="o">)</span> <span class="s2">&#34;item1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;value1&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;value2&#34;</span>
+127.0.0.1:6379&gt; hmget hash2 item1 item2 <span class="c1"># hmget获取多个值</span>
+1<span class="o">)</span> <span class="s2">&#34;value1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;value2&#34;</span>
+127.0.0.1:6379&gt; hdel hash2 item1 item2 <span class="c1"># hdel删除一个或者多个</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; HGETALL hash2
+<span class="o">(</span>empty array<span class="o">)</span>
+127.0.0.1:6379&gt; hlen hash1 <span class="c1"># hlen取得长度</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; HEXISTS hash1 item1 <span class="c1">#判断是否存在</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; HKEYS hash1 <span class="c1">#获取所有key</span>
+1<span class="o">)</span> <span class="s2">&#34;item1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+127.0.0.1:6379&gt; HVALS hash1 <span class="c1">#获取说有值</span>
+1<span class="o">)</span> <span class="s2">&#34;value1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;value2&#34;</span>
+127.0.0.1:6379&gt; hset hash1 item3 <span class="m">6</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; HINCRBY hash1 item3 <span class="m">4</span> <span class="c1">#增加指定key的value</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">10</span>
+127.0.0.1:6379&gt; HINCRBY hash1 item3 -5 <span class="c1">#减少指定key的value</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">5</span>
+127.0.0.1:6379&gt; HSETNX hash1 item4 hello <span class="c1">#如果不存在，则可以设置</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; HSETNX hash1 item4 world <span class="c1">#如果存在，则不可以设置</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">0</span>
+127.0.0.1:6379&gt; HGETALL hash1
+1<span class="o">)</span> <span class="s2">&#34;item1&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;value1&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;item2&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;value2&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;item3&#34;</span>
+6<span class="o">)</span> <span class="s2">&#34;5&#34;</span>
+7<span class="o">)</span> <span class="s2">&#34;item4&#34;</span>
+8<span class="o">)</span> <span class="s2">&#34;hello&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>哈希表可以用在存储对象之类的数据上。比如存储用户数据：</p>
+<table>
+<thead>
+<tr>
+<th>KEY</th>
+<th>Field-Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user:1</code></td>
+<td><code>field: name value: brein / field: age value: 18</code></td>
+</tr>
+<tr>
+<td><code>user:2</code></td>
+<td><code>field: name value: zs / field: age value: 8</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="有序集合zset">有序集合（Zset）</h4>
+<p>在<code>SET</code>的基础上增加了一个值，<code>SET k1 v1</code> =&gt; <code>zset k1 score1 v1</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; zadd zset1 <span class="m">1</span> one
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; zadd zset1 <span class="m">2</span> two <span class="m">3</span> three
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+127.0.0.1:6379&gt; ZRANGE zset1 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+<span class="c1">#ZRANGEBYSCORE key min max [withscores]</span>
+127.0.0.1:6379&gt; zadd salary <span class="m">25000</span> brein <span class="m">5000</span> zhangsan <span class="m">8000</span> lisi
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">3</span>
+127.0.0.1:6379&gt; ZRANGE salary <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;zhangsan&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;lisi&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;brein&#34;</span>
+127.0.0.1:6379&gt; ZRANGEBYSCORE salary -inf +inf <span class="c1">#显示全部 从小到大</span>
+1<span class="o">)</span> <span class="s2">&#34;zhangsan&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;lisi&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;brein&#34;</span>
+127.0.0.1:6379&gt; ZRANGEBYSCORE salary -inf +inf withscores <span class="c1">#显示全部并附带score</span>
+1<span class="o">)</span> <span class="s2">&#34;zhangsan&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;5000&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;lisi&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;8000&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;brein&#34;</span>
+6<span class="o">)</span> <span class="s2">&#34;25000&#34;</span>
+127.0.0.1:6379&gt; ZRANGEBYSCORE salary -inf <span class="m">8000</span> withscores <span class="c1"># max=8000</span>
+1<span class="o">)</span> <span class="s2">&#34;zhangsan&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;5000&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;lisi&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;8000&#34;</span>
+127.0.0.1:6379&gt; ZREVRANGE salary <span class="m">0</span> -1 withscores <span class="c1"># 降序排列</span>
+1<span class="o">)</span> <span class="s2">&#34;brein&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;25000&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;lisi&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;8000&#34;</span>
+5<span class="o">)</span> <span class="s2">&#34;zhangsan&#34;</span>
+6<span class="o">)</span> <span class="s2">&#34;5000&#34;</span>
+127.0.0.1:6379&gt; ZCOUNT salary <span class="m">0</span> <span class="m">20000</span> <span class="c1">#指定区间的数量</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">2</span>
+
+127.0.0.1:6379&gt; zadd zset1 <span class="m">9000</span> wangwu
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; ZRANGE zset1 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+4<span class="o">)</span> <span class="s2">&#34;wangwu&#34;</span>
+127.0.0.1:6379&gt; ZCARD zset1 <span class="c1">#显示元素个数</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">4</span>
+127.0.0.1:6379&gt; ZREM zset1 wangwu <span class="c1">#移除元素</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">1</span>
+127.0.0.1:6379&gt; ZRANGE zset1 <span class="m">0</span> -1
+1<span class="o">)</span> <span class="s2">&#34;one&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;two&#34;</span>
+3<span class="o">)</span> <span class="s2">&#34;three&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>应用场景</p>
+<ul>
+<li>存储成绩表 ，工资表排序</li>
+<li>带权重的判断，普通消息，重要消息，错误消息</li>
+<li>实时的排行榜，取 TOP N</li>
+</ul>
+<h3 id="三种特殊数据类型">三种特殊数据类型</h3>
+<h4 id="geospatial-地理位置">Geospatial 地理位置</h4>
+<p>应用：朋友位置，附近的人（推算方圆几里的人），打车地图地理位置距离计算等等（推算两地之间的距离）</p>
+<h4 id="hyperloglog-基数统计">Hyperloglog 基数统计</h4>
+<p>占用内存是固定的，只需要<code>12kb</code>内存。从内存角度看，<code>hyperloglog</code>就是首选。</p>
+<blockquote>
+<p>什么是基数？</p>
+</blockquote>
+<p>A { 1, 3, 5, 7, 8, 9}</p>
+<p>B { 1, 3, 5, 7, 8}</p>
+<p>基数（不重复的元素）= 5 ， 可以接受误差</p>
+<blockquote>
+<p>实际应用</p>
+</blockquote>
+<p>网页 UV（一个人访问一个网站多次，只算一次）:</p>
+<p>传统方式：<code>SET</code>保存用户 ID，然后对 ID 进行计算。这种方式如果数据量太大就是去了意义，以为目的是计数，并不是存所有的 ID。</p>
+<p>基数统计：用户访问一次就放入 PF 中<code>PFadd key a b c d e f a b c</code> ，允许重复，统计的时候只需要使用<code>PFCOUNT key</code>即可。</p>
+<p>如果允许容错，那么使用<code>Hyperloglog</code>是不错的选择；如果不允许容错就使用<code>SET</code>或者自己的数据类型。</p>
+<h4 id="bitmap-位图">Bitmap 位图</h4>
+<p>统计用户信息：活跃、不活跃；登录，未登录；打卡，365 打卡。都是操作二进制位来进行记录，就只有<code>0</code>和<code>1</code>两个状态。</p>
+<p>例如：365 天每天对应一个<code>bit</code>，365 天 = 365bit ，那么占有内存大概就是<code>45KB</code>左右。哪天打卡，哪天设置为<code>1</code>。</p>
+<h3 id="事务">事务</h3>
+<p><code>Redis</code>单条命令是保证原子性的，但是事务是不保证原子性的。所有的命令在事务中没有被直接执行，直到<code>EXEC</code>被执行。事务中的所有命令都会被序列化，事务执行过程中会按照顺序执行，事务执行过程中具有排他性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; MULTI <span class="c1">#事务开始</span>
+OK
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; <span class="nb">set</span> k1 value1
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; <span class="nb">set</span> k2 value2
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; get k1
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; EXEC <span class="c1">#执行事务</span>
+1<span class="o">)</span> OK
+2<span class="o">)</span> OK
+3<span class="o">)</span> <span class="s2">&#34;value1&#34;</span>
+127.0.0.1:6379&gt;
+
+</code></pre></td></tr></table>
+</div>
+</div><p>事务命令入队中，某个命令失败了，则整个事务执行报错：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">127.0.0.1:6379&gt; MULTI
+OK
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; <span class="nb">set</span> k1 v1
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; <span class="nb">set</span> k1
+<span class="o">(</span>error<span class="o">)</span> ERR wrong number of arguments <span class="k">for</span> <span class="s1">&#39;set&#39;</span> <span class="nb">command</span>
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; EXEC
+<span class="o">(</span>error<span class="o">)</span> EXECABORT Transaction discarded because of previous errors.
+127.0.0.1:6379&gt;
+
+</code></pre></td></tr></table>
+</div>
+</div><p>事务中某个命令执行时出错，该命令失败，其他命令不会失败：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">127.0.0.1:6379&gt; SET key1 <span class="s2">&#34;hello&#34;</span>
+OK
+127.0.0.1:6379&gt; MULTI
+OK
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; INCR key1  <span class="c1">#此句会报错</span>
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; <span class="nb">set</span> key2 value2
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; get key2
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; EXEC
+1<span class="o">)</span> <span class="o">(</span>error<span class="o">)</span> ERR value is not an integer or out of range <span class="c1">#此命令会执行失败</span>
+2<span class="o">)</span> OK
+3<span class="o">)</span> <span class="s2">&#34;value2&#34;</span>
+127.0.0.1:6379&gt;
+
+</code></pre></td></tr></table>
+</div>
+</div><p>录入命令过程中，取消事务：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; SET k11 <span class="s2">&#34;hello world&#34;</span>
+OK
+127.0.0.1:6379&gt; MULTI
+OK
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; <span class="nb">set</span> k11 <span class="s2">&#34;hi brein!!&#34;</span>
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; DISCARD <span class="c1">#取消事务后，事务中的命令不会生效</span>
+OK
+127.0.0.1:6379&gt; get k11
+<span class="s2">&#34;hello world&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="悲观锁">悲观锁</h4>
+<p>认为什么时候都会出错，无论做什么都会加锁。</p>
+<h4 id="乐观锁">乐观锁</h4>
+<p>认为什么时候都不会出错，所以不会上锁，更新数据时判断在此期间是否有修改这个数据。</p>
+<blockquote>
+<p>利用<code>WATCH</code></p>
+<p>获取 Version，更新时比较 Version</p>
+</blockquote>
+<p>正常执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">127.0.0.1:6379&gt; <span class="nb">set</span> money <span class="m">100</span>
+OK
+127.0.0.1:6379&gt; <span class="nb">set</span> out <span class="m">0</span>
+OK
+127.0.0.1:6379&gt; watch money <span class="c1">#监视</span>
+OK
+127.0.0.1:6379&gt; MULTI
+OK
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; decrby money <span class="m">20</span>
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; incrby money <span class="m">10</span>
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; EXEC
+1<span class="o">)</span> <span class="o">(</span>integer<span class="o">)</span> <span class="m">80</span>
+2<span class="o">)</span> <span class="o">(</span>integer<span class="o">)</span> <span class="m">90</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>开启另一个进程，测试多线程修改值， 使用<code>WATCH</code>当作乐观锁：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#client #1</span>
+127.0.0.1:6379&gt; incrby money <span class="m">10</span> <span class="c1">#2）修改money</span>
+<span class="o">(</span>integer<span class="o">)</span> <span class="m">100</span>
+127.0.0.1:6379&gt; get money
+<span class="s2">&#34;100&#34;</span>
+<span class="c1">#client #2</span>
+127.0.0.1:6379&gt; keys *
+1<span class="o">)</span> <span class="s2">&#34;out&#34;</span>
+2<span class="o">)</span> <span class="s2">&#34;money&#34;</span>
+127.0.0.1:6379&gt; get money
+<span class="s2">&#34;90&#34;</span>
+127.0.0.1:6379&gt; watch money <span class="c1">#1）监视money</span>
+OK
+127.0.0.1:6379&gt; MULTI
+OK
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; incrby money <span class="m">10</span>
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; EXEC
+<span class="o">(</span>nil<span class="o">)</span> <span class="c1">#事务的执行会失败，因为watch监测到money有过修改（version不一致），所以事务不会执行</span>
+<span class="c1">#若要继续执行该操作，需要解锁unwatch，再watch，再执行</span>
+127.0.0.1:6379&gt; UNWATCH
+OK
+127.0.0.1:6379&gt; WATCH money
+OK
+127.0.0.1:6379&gt; MULTI
+OK
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; incrby money <span class="m">10</span>
+QUEUED
+127.0.0.1:6379<span class="o">(</span>TX<span class="o">)</span>&gt; EXEC
+1<span class="o">)</span> <span class="o">(</span>integer<span class="o">)</span> <span class="m">110</span>
+
+
+</code></pre></td></tr></table>
+</div>
+</div><p>乐观锁可以使用在：秒杀的场景</p>
+<p>（未完待续）</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Brein</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021年7月17日 09时32分01秒
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content">转载本站文章请注明作者和出处 <a rel="license noopener" href="https://lostcosta.github.io" target="_blank">Brein&apos;s Blog</a>，请勿用于任何商业用途</span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/redis/">Redis</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/dotnetcore_03/">
+            <span class="next-text nav-default">.Net中的特性(Attribute)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="mailto:brein.zhang@gmail.com" class="iconfont icon-email" title="email"></a>
+  <a href="https://github.com/lostcosta" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.coolgogoing.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 -
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    
+    
+  </div>
+
+  <span class="copyright-year">
+    &copy;
+    2018 -
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span>
+    <span>Brein. All Rights Reserved</span>
+  </span>
+  <span class="power-by">
+    京ICP备2021020827号-1
+  </span>
+  <span class="power-by">
+    <div style="width:300px;margin:0 auto;">
+      <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011502004807"
+        style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="/images/beian.png"
+          style="float:left;" />
+        <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11011502004807号
+        </p>
+      </a>
+    </div>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

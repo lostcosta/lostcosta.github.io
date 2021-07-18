@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Brein. All Rights Reserved</copyright>
-    <lastBuildDate>Sat, 14 Nov 2020 13:02:56 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jul 2021 09:32:01 +0800</lastBuildDate><atom:link href="https://www.coolgogoing.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于</title>
       <link>https://www.coolgogoing.com/about/</link>
@@ -15,6 +15,42 @@
       
       <guid>https://www.coolgogoing.com/about/</guid>
       <description>张炳晓，计算机专业硕士毕业，现工作于北京。 主要从事于.NET方向的开发工作，技术栈如下: 深入理解并掌握C#语言及其核心原理 熟练掌握以Silv</description>
+    </item>
+    
+    <item>
+      <title>Redis基础</title>
+      <link>https://www.coolgogoing.com/post/redis_01/</link>
+      <pubDate>Sat, 17 Jul 2021 09:32:01 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/redis_01/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Redis&lt;/code&gt;(&lt;code&gt;Re&lt;/code&gt;mote &lt;code&gt;Di&lt;/code&gt;ctionary &lt;code&gt;S&lt;/code&gt;erver)是一个使用&lt;code&gt;ANSI C&lt;/code&gt;编写的开源、支持网络、基于内存、分布式、可选持久性的键值对存储数据库。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>.Net中的特性(Attribute)</title>
+      <link>https://www.coolgogoing.com/post/dotnetcore_03/</link>
+      <pubDate>Sat, 10 Jul 2021 21:58:57 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/dotnetcore_03/</guid>
+      <description>&lt;p&gt;本文作为&lt;code&gt;ASP.NET Core&lt;/code&gt;的预备知识，详细讲解下&lt;code&gt;.NET&lt;/code&gt;中的&lt;strong&gt;特性&lt;/strong&gt;。&lt;strong&gt;特性&lt;/strong&gt;在&lt;code&gt;ASP.NET Core&lt;/code&gt;开发中是使用最频繁的技术之一，同时也是&lt;code&gt;AOP&lt;/code&gt;编程的技术基础。因此很又必要对&lt;strong&gt;特性&lt;/strong&gt;进行一个详细的说明，为将来的开发打下基础。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>控制反转（IoC）与依赖注入（DI）</title>
+      <link>https://www.coolgogoing.com/post/dotnetcore_2/</link>
+      <pubDate>Sat, 10 Jul 2021 00:58:02 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/dotnetcore_2/</guid>
+      <description>&lt;p&gt;控制反转（英语：&lt;code&gt;Inversion of Control&lt;/code&gt;，缩写为&lt;code&gt;IoC&lt;/code&gt;），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（&lt;code&gt;Dependency Injection&lt;/code&gt;，简称&lt;code&gt;DI&lt;/code&gt;），还有一种方式叫“依赖查找”（&lt;code&gt;Dependency Lookup&lt;/code&gt;）。实现控制反转主要有两种方式：依赖注入和依赖查找。两者的区别在于，前者是被动的接收对象，在类 A 的实例创建过程中即创建了依赖的 B 对象，通过类型或名称来判断将不同的对象注入到不同的属性中，而后者是主动索取相应类型的对象，获得依赖对象的时间也可以在代码中自由控制。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ASP.NET Core 简介</title>
+      <link>https://www.coolgogoing.com/post/dotnetcore_01/</link>
+      <pubDate>Fri, 09 Jul 2021 01:08:44 +0800</pubDate>
+      
+      <guid>https://www.coolgogoing.com/post/dotnetcore_01/</guid>
+      <description>&lt;p&gt;随着微软逐渐拥抱开源，旗下.NET 家族也转向跨平台。虽然国内使用.NET 技术栈的项目比较少，但我相信随着对 &lt;code&gt;.NET Core&lt;/code&gt; 的逐步了解，在国内其也将拥有一片天地。我也希望为 &lt;code&gt;.NET Core&lt;/code&gt; 在国内的普及贡献自己的一份力量。本次带来 &lt;code&gt;ASP.NET Core&lt;/code&gt; 入门教程。下面是第一章，对 &lt;code&gt;ASP.NET Core&lt;/code&gt; 做一个总体的介绍。&lt;/p&gt;</description>
     </item>
     
     <item>
